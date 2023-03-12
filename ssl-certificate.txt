@@ -1,0 +1,29 @@
+Μέσα στον φάκελο client φτιάχνουμε έναν φάκελο ssl.
+
+Ανοίγουμε το PowerShell σαν Administrator,
+πάμε στον φάκελο client\ssl,
+και εκεί τρέχουμε την εντολή choco install mkcert
+για να εγκατασταθεί το mkcert μέσω του Chocolatey.
+
+(mkcert is a simple tool for making locally-trusted development certificates.
+It requires no configuration.)
+
+Μετά τρέχουμε την εντολή mkcert localhost.
+
+Και δημιουργούνται τα δύο αρχεία
+localhost-key.pem και localhost.pem
+μέσα στον φάκελο ssl.
+
+Created a new certificate valid for "localhost"
+The certificate is at "./localhost.pem" and the key at "./localhost-key.pem"
+
+Μετά στο αρχείο angular.json προσθέτουμε:
+
+"serve": {
+    "builder": "@angular-devkit/build-angular:dev-server",
+    "options": {
+        "sslCert": "ssl/localhost.pem",
+        "sslKey": "ssl/localhost-key.pem",
+        "ssl": true
+    },
+

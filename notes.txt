@@ -37,7 +37,7 @@ dotnet ef migrations add "Sqlite initial" -p Infrastructure -s API -c AppIdentit
 dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c StoreContext -o Data/Migrations
 dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c AppIdentityDbContext -o Identity/Migrations
 
-Οι παραπάνω εντολές να τρέξουν από τον root φάκελο
+Οι παραπάνω εντολές να τρέξουν από τον root φάκελο του project.
 
 ----------------------------------------------------------------------------------------------------------
 
@@ -55,4 +55,13 @@ dotnet ef database drop --force --context AppIdentityDbContext
 
 Μετά γράφουμε:
 dotnet run
+
+--------------------------------------------------------------------------------------------------------
+
+email: bob@test.com
+password: Pa$$w0rd
+
+----------------------------------------------------------------------------------------------------
+
+Για να τεστάρουμε την πληρωμή στο Stripe βάζουμε card number: 4242 4242 4242 4242
 

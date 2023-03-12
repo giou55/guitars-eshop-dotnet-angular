@@ -14,10 +14,10 @@ namespace API.Extensions
             IConfiguration config)
         {
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
-            services.AddDbContext<StoreContext>(opt =>
+            services.AddDbContext<StoreContext>(options =>
             {
-                // options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-                opt.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                //options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
             });
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
