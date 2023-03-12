@@ -36,16 +36,6 @@ app.UseStaticFiles(new StaticFileOptions
 
 //app.UseCors("CorsPolicy");
 
-app.UseCors(policyBuilder =>
-    policyBuilder
-        .AllowAnyHeader()
-        .AllowAnyMethod()
-        // we need to add AllowCredentials, otherwise we get a problem from SignalR
-        // authenticating to the server from the client
-        .AllowCredentials()
-        .WithOrigins("https://localhost:4200")
-);
-
 app.UseAuthentication();
 app.UseAuthorization();
 
