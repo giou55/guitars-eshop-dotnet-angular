@@ -1,0 +1,15 @@
+To work with Redis in a Windows machine:
+
+1.Install Chocolatey (chocolatey.org, package manager)
+
+2.Run the command as administrator to install Redis package:
+  choco install redis-64 --version=3.0.501
+
+3.Run the command from terminal to start Redis:
+  redis-server
+
+4.Run the command in a new terminal tab to give you a list of the keys
+  redis-cli KEYS '*'
+
+5.Run the command to show you the value of the key
+  redis-cli GET <keyvalue>

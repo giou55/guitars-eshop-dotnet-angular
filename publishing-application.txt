@@ -1,0 +1,164 @@
+Αλλάζουμε το "outputPath" μέσα στο αρχείο angular.json:
+
+"build": {
+          "options": {
+            "outputPath": "dist/client",
+
+"build": {
+          "options": {
+            "outputPath": "../API/wwwroot",
+
+-----------------------------------------------------------------------
+
+Πάμε στον φάκελο client και τρέχουμε ng build
+για να φτιαχτούν τα στατικά αρχεία μέσα στον φάκελο wwwroot.
+
+------------------------------------------------------------------------
+
+Αφού τρέξουμε το Docker Desktop,
+πάμε στον root φάκελο και γράφουμε:
+docker-compose up -d
+για να τρέξουν τα τρία containers.
+
+----------------------------------------------------------------------
+
+Φτιάχνουμε τα "ConnectionStrings" στο αρχείο appsettings.Development.json
+ώστε να συνδεόμαστε με την Postgres.
+
+----------------------------------------------------------------------
+
+Στο αρχείο ApplicationServicesExtensions.cs αλλάζουμε από SQLite σε Postgres:
+
+opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
+
+opt.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+
+---------------------------------------------------------------------
+
+Επίσης στο αρχείο IdentityServicesExtensions.cs αλλάζουμε από SQLite σε Postgres:
+
+opt.UseSqlite(config.GetConnectionString("IdentityConnection"));
+
+opt.UseNpgsql(config.GetConnectionString("IdentityConnection"));
+
+---------------------------------------------------------------------
+
+Διαγράφουμε τον φάκελο Infrastructure/Data/Migrations
+και επίσης διαγράφουμε τον φάκελο Infrastructure/Identity/Migrations
+
+---------------------------------------------------------------------
+
+Πάμε στον root φάκελο και τρέχουμε τις εντολές
+dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c StoreContext -o Data/Migrations
+και
+dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c AppIdentityDbContext -o Identity/Migrations
+για να φτιαχτούν το νέα migrations.
+
+-p -> project
+-s -> startup project
+-c -> context
+-o -> output
+
+-----------------------------------------------------------------------
+
+Πάμε στον φάκελο API και τρέχουμε την εντολή
+dotnet run
+ή
+dotnet watch --no-hot-reload
+για να ξεκινήσει η εφαρμογή μας, να φτιαχτούν οι βάσεις
+και να γίνουν seed τα δεδομένα.
+
+-----------------------------------------------------------------------
+
+Και τώρα μπορούμε να πάμε στο localhost:5001 να δούμε την εφαρμογή μας,
+χωρίς αυτή τη φορά να τρέχει η Angular.
+
+------------------------------------------------------------------------
+
+Πάμε στον root φάκελο και τρέχουμε την εντολή
+dotnet publish -c Release -o publish skinet.sln
+και δημιουργείται η εφαρμογή μας μέσα στον φάκελο publish
+
+-c -> configuration
+-o -> output
+
+--------------------------------------------------------------------------
+
+We need to tell our app that when it builds we need to copy the
+API/Content directory to our publish directory.
+
+Γι'αυτό πάμε στο αρχείο API/API.csproj και προσθέτουμε another item inside
+ItemGroup where we include our referencesto our other dependencies.
+
+<ItemGroup>
+  <Content Include="Content\**" CopyToPublishDirectory="PreserveNewest" />
+  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+</ItemGroup>
+
+Μετά πάμε στον root φάκελο και τρέχουμε πάλι την εντολή
+dotnet publish -c Release -o publish skinet.sln
+και τώρα έχουμε και τον φάκελο Content μέσα στον φάκελο publish
+
+-------------------------------------------------------------------------
+
+Στο αρχείο Infrastructure/Data/StoreContextSeed.cs γίνεται το seed των data,
+διαβάζοντας τα τέσσερα αρχεία json που είναι μέσα
+στον φάκελο Infrastructure/Data/SeedData.
+
+Όμως το file path για το production δεν είναι σωστό.
+Γι'αυτό θα πάμε στο αρχείο Infrastructure\Infrastructure.csproj
+και θα προσθέσουμε μέσα στο ItemGroup το <None ... />
+
+<ItemGroup>
+  <None Include="Data\SeedData\**" CopyToOutputDirectory="PreserveNewest" />
+  <ProjectReference Include="..\Core\Core.csproj" />
+</ItemGroup>
+
+Και μετά θα πάμε στο αρχείο Infrastructure/Data/StoreContextSeed.cs
+και θα διορθώσουμε τα path.
+
+Αντί για
+
+if (!context.ProductBrands.Any())
+{
+  var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
+  var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
+  context.ProductBrands.AddRange(brands);
+}
+
+Θα βάλουμε
+
+var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+if (!context.ProductBrands.Any())
+{
+  var brandsData = File.ReadAllText(path + @"/Data/SeedData/brands.json");
+  var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
+  context.ProductBrands.AddRange(brands);
+}
+
+---------------------------------------------------------------------------
+
+Θα δοκιμάσουμε να τρέξουμε την εφαρμογή μας.
+Πρώτα θα διαγράψουμε τις δύο βάσεις μας.
+
+Αφού τρέξουμε το Docker Desktop,
+πάμε στον root φάκελο και γράφουμε
+docker-compose up -d
+για να τρέξουν τα τρία containers.
+
+Μετά πάμε στον root φάκελο και τρέχουμε τις εντολές
+dotnet ef database drop -s API -p Infrastructure -c StoreContext
+και
+dotnet ef database drop -s API -p Infrastructure -c AppIdentityDbContext
+
+Μετά πάμε στον φάκελο API και τρέχουμε την εντολή
+dotnet run
+ή
+dotnet watch --no-hot-reload
+για να ξεκινήσει η εφαρμογή μας, να φτιαχτούν οι βάσεις
+και να γίνουν seed τα δεδομένα.
+
+Τώρα πάμε στο https://localhost:5001
+και βλέπουμε την εφαρμογή μας.
+
+----------------------------------------------------------------------------
