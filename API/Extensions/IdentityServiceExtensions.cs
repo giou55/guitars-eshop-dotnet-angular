@@ -10,15 +10,16 @@ namespace API.Extensions
 {
     public static class IdentityServiceExtensions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services, 
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services,
             IConfiguration config)
         {
-            services.AddDbContext<AppIdentityDbContext>(opt =>
+            services.AddDbContext<AppIdentityDbContext>(options =>
             {
-                opt.UseNpgsql(config.GetConnectionString("IdentityConnection"));
+                // options.UseSqlite(config.GetConnectionString("IdentityConnection"));
+                options.UseNpgsql(config.GetConnectionString("IdentityConnection"));
             });
 
-            services.AddIdentityCore<AppUser>(opt => 
+            services.AddIdentityCore<AppUser>(opt =>
             {
                 // add identity options here
             })
@@ -26,7 +27,7 @@ namespace API.Extensions
             .AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => 
+                .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
