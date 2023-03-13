@@ -14,11 +14,11 @@ namespace API.Extensions
             IConfiguration config)
         {
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
-            
+
             services.AddDbContext<StoreContext>(options =>
             {
-                //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                //options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
             });
 
             services.AddSingleton<IConnectionMultiplexer>(c =>
@@ -54,13 +54,13 @@ namespace API.Extensions
                 };
             });
 
-            services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
-                });
-            });
+            // services.AddCors(opt =>
+            // {
+            //     opt.AddPolicy("CorsPolicy", policy =>
+            //     {
+            //         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+            //     });
+            // });
 
             return services;
         }
