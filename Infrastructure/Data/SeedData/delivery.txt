@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "ShortName": "UPS1",
+    "Description": "Ο γρηγορότερος τρόπος παράδοσης",
+    "DeliveryTime": "1-2 Μέρες",
+    "Price": 15
+  },
+  {
+    "Id": 2,
+    "ShortName": "UPS2",
+    "Description": "Παραλαβή το αργότερο 5 μέρες",
+    "DeliveryTime": "2-5 Μέρες",
+    "Price": 10
+  },
+  {
+    "Id": 3,
+    "ShortName": "UPS3",
+    "Description": "Μικρή χρέωση με λίγη καθυστέρηση",
+    "DeliveryTime": "5-10 Μέρες",
+    "Price": 5
+  },
+  {
+    "Id": 4,
+    "ShortName": "FREE",
+    "Description": "Χωρίς χρέωση! Πληρώνεις μόνο για αυτό που αγοράζεις",
+    "DeliveryTime": "1-2 Εβδομάδες",
+    "Price": 0
+  }
+]

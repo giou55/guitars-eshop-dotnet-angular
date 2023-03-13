@@ -1,0 +1,90 @@
+[
+  {
+    "Name": "Μάλλινα γάντια Tommy Hilfiger",
+    "Description": "Γάντια από τη συλλογή Tommy Hilfiger. Υλικό: Μαλλί, 21% Βισκόζη, 21% Poliuretan, 1% Άλλο",
+    "Price": 26.90,
+    "PictureUrl": "images/products/sb-ang1.png",
+    "ProductTypeId": 1,
+    "ProductBrandId": 1
+  },
+  {
+    "Name": "Γάντια Nike",
+    "Description": "Μοντέλο από λεπτό πλεκτό ύφασμα. Υλικό: 100% Ακρυλικό",
+    "Price": 19.60,
+    "PictureUrl": "images/products/sb-ang2.png",
+    "ProductTypeId": 1,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Calvin Klein Jeans - Γάντια",
+    "Description": "Γάντια με πέντε δάκτυλα από τη συλλογή Calvin Klein Jeans. Μοντέλο από λεπτό πλεκτό ύφασμα. Υλικό: 50% Ακρυλικό, 50% Βαμβάκι",
+    "Price": 22.99,
+    "PictureUrl": "images/products/sb-core1.png",
+    "ProductTypeId": 1,
+    "ProductBrandId": 3
+  },
+  {
+    "Name": "Polo Strike Large Ανδρική Τσάντα Ώμου / Χιαστί",
+    "Description": "Τσαντάκι ώμου-χιαστί από την POLO, της σειράς Strike. Ένα ιδανικό αξεσουάρ για τις μετακινήσεις σας.",
+    "Price": 17.50,
+    "PictureUrl": "images/products/sb-core2.png",
+    "ProductTypeId": 11,
+    "ProductBrandId": 10
+  },
+  {
+    "Name": "Polo Tectonic Υφασμάτινο Σακίδιο Πλάτης Γκρι 26lt",
+    "Description": "Δύο κύριες θήκες με φερμουάρ, τρείς εξωτερικές θήκες, θήκη για laptop έως 17'', ρυθμιζόμενοι ιμάντες ώμου, κατασκευασμένο από ανθεκτικό ύφασμα",
+    "Price": 50,
+    "PictureUrl": "images/products/sb-react1.png",
+    "ProductTypeId": 9,
+    "ProductBrandId": 10
+  },
+  {
+    "Name": "Μεταξωτή γραβάτα HUGO",
+    "Description": "Μοντέλο από ύφασμα με σχέδια. Πλάτος στο ευρύτερο σημείο: 5,5 cm. Μήκος: 149 cm. Υλικό: 100% Μετάξι",
+    "Price": 49.90,
+    "PictureUrl": "images/products/sb-ts1.png",
+    "ProductTypeId": 2,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Μεταξωτή γραβάτα HUGO",
+    "Description": "Μοντέλο από ύφασμα με σχέδια. Πλάτος στο ευρύτερο σημείο: 6 cm. Μήκος: 150 cm. Υλικό: 100% Μετάξι",
+    "Price": 47.90,
+    "PictureUrl": "images/products/sb-ts1.png",
+    "ProductTypeId": 2,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Γυαλιά ηλίου Ray-Ban",
+    "Description": "Μοντέλο από λείους με φακούς και πλαίσιο από συνδυασμό πλαστικού και μετάλλου. Διαθέτει φίλτρο UV 400.",
+    "Price": 139.90,
+    "PictureUrl": "images/products/hat-core1.png",
+    "ProductTypeId": 3,
+    "ProductBrandId": 8
+  },
+  {
+    "Name": "Γυαλιά ηλίου HUGO",
+    "Description": "Μοντέλο από λείους με φακούς και πλαίσιο από πλαστική ύλη. Διαθέτει φίλτρο UV 400.",
+    "Price": 159.90,
+    "PictureUrl": "images/products/hat-react1.png",
+    "ProductTypeId": 3,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Γυαλιά ηλίου Tommy Hilfiger",
+    "Description": "Μοντέλο από λείους με φακούς και πλαίσιο από πλαστική ύλη. Διαθέτει φίλτρο UV 400.",
+    "Price": 169.90,
+    "PictureUrl": "images/products/hat-react1.png",
+    "ProductTypeId": 3,
+    "ProductBrandId": 1
+  },
+  {
+    "Name": "Δερμάτινη ζώνη Calvin Klein",
+    "Description": "Μοντέλο από από φυσικό δέρμα. Κλείσιμο με πόρπη με καρφίτσα. Μήκος ζώνης από την αρχή της πόρπης έως την τελευταία τρύπα: 90 cm. Αριθμός οπών: 5. Πλάτος ζώνης: 3,5 cm.",
+    "Price": 61.90,
+    "PictureUrl": "images/products/hat-react2.png",
+    "ProductTypeId": 4,
+    "ProductBrandId": 3
+  }
+]
