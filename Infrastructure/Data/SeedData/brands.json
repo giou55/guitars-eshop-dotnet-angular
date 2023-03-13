@@ -1,26 +1,42 @@
 [
   {
     "Id": 1,
-    "Name": "Angular"
+    "Name": "Christian Stoll"
   },
   {
     "Id": 2,
-    "Name": "NetCore"
+    "Name": "Duesenberg"
   },
   {
     "Id": 3,
-    "Name": "VS Code"
+    "Name": "Ibanez"
   },
   {
     "Id": 4,
-    "Name": "React"
+    "Name": "Larry Carlton"
   },
   {
     "Id": 5,
-    "Name": "Typescript"
+    "Name": "Martinez"
   },
   {
     "Id": 6,
-    "Name": "Redis"
+    "Name": "Mayson"
+  },
+  {
+    "Id": 7,
+    "Name": "Nik Huber"
+  },
+  {
+    "Id": 8,
+    "Name": "Richwood"
+  },
+  {
+    "Id": 9,
+    "Name": "Salvador Cortez"
+  },
+  {
+    "Id": 10,
+    "Name": "Schecter"
   }
 ]

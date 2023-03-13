@@ -1,146 +1,178 @@
 [
   {
-    "Name": "Angular Speedster Board 2000",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 200,
-    "PictureUrl": "images/products/sb-ang1.png",
-    "ProductTypeId": 1,
+    "Name": "CHRISTIAN STOLL Pimera Custom",
+    "Description": "100% χειροποίητη κλασική κιθάρα",
+    "Price": 1364,
+    "PictureUrl": "images/products/stoll_klassik_primera_andreasschulz_2012_01_2x3_1.jpg",
+    "ProductTypeId": 4,
     "ProductBrandId": 1
   },
   {
-    "Name": "Green Angular Board 3000",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 150,
-    "PictureUrl": "images/products/sb-ang2.png",
-    "ProductTypeId": 1,
+    "Name": "CHRISTIAN STOLL Ambition",
+    "Description": "Ακουστική κιθάρα – χειροποίητη",
+    "Price": 2356,
+    "PictureUrl": "images/products/stoll_ambition_01.jpg",
+    "ProductTypeId": 3,
     "ProductBrandId": 1
   },
   {
-    "Name": "Core Board Speed Rush 3",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "images/products/sb-core1.png",
+    "Name": "CHRISTIAN STOLL Pimera",
+    "Description": "Η μόνη 100% χειροποίητη κιθάρα στην αγορά με τιμή κάτω από 1.000 ευρώ",
+    "Price": 868,
+    "PictureUrl": "images/products/stoll_klassik_primera_andreasschulz_2012_01_2x3.jpg",
+    "ProductTypeId": 4,
+    "ProductBrandId": 1
+  },
+  {
+    "Name": "Duesenberg Alliance Series Mike Campbell",
+    "Description": "Duesenberg Alliance Series Mike Campbell 30th Anniversary Blue",
+    "Price": 2900,
+    "PictureUrl": "images/products/duesenberg-alliance-series-mike-campbell.jpg",
     "ProductTypeId": 1,
     "ProductBrandId": 2
   },
   {
-    "Name": "Net Core Super Board",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 300,
-    "PictureUrl": "images/products/sb-core2.png",
+    "Name": "Duesenberg Paloma Black",
+    "Description": "Ηλεκτρική κιθάρα, προϊόν διαθέσιμο κατόπιν παραγγελίας",
+    "Price": 2500,
+    "PictureUrl": "images/products/duesenberg-paloma-black.jpg",
     "ProductTypeId": 1,
     "ProductBrandId": 2
   },
   {
-    "Name": "React Board Super Whizzy Fast",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 250,
-    "PictureUrl": "images/products/sb-react1.png",
+    "Name": "Duesenberg Starplayer TV Red Sparkle",
+    "Description": "Ηλεκτρική κιθάρα, προϊόν διαθέσιμο κατόπιν παραγγελίας",
+    "Price": 2300,
+    "PictureUrl": "images/products/duesenberg-starplayer-tv-red-sparkle.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Ibanez RG370 AHMZ",
+    "Description": "Ηλεκτρική κιθάρα, προϊόν διαθέσιμο κατόπιν παραγγελίας",
+    "Price": 510,
+    "PictureUrl": "images/products/ibanez-RG370-AHMZ.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 3
+  },
+  {
+    "Name": "Larry Carlton A3 GSNT",
+    "Description": "Ηλεκτρικοακουστική κιθάρα, προϊόν διαθέσιμο κατόπιν παραγγελίας",
+    "Price": 419,
+    "PictureUrl": "images/products/Larry-Carlton-A3-GSNT.jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Larry Carlton S7 3TS",
+    "Description": "Ηλεκτρική κιθάρα, κωδικός προϊόντος: 1201",
+    "Price": 530,
+    "PictureUrl": "images/products/Larry-Carlton-S-Series-sunburst.jpg",
     "ProductTypeId": 1,
     "ProductBrandId": 4
   },
   {
-    "Name": "Typescript Entry Board",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 120,
-    "PictureUrl": "images/products/sb-ts1.png",
+    "Name": "Larry Carlton S7 AWH",
+    "Description": "Ηλεκτρική κιθάρα, κωδικός προϊόντος: 3000",
+    "Price": 545,
+    "PictureUrl": "images/products/larry-carlton-s7-awh.jpg",
     "ProductTypeId": 1,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "MARTINEZ RONDA S",
+    "Description": "Κλασική κιθάρα, κωδικός προϊόντος: 2108",
+    "Price": 545,
+    "PictureUrl": "images/products/martinez-ronda-s-TOP.jpg",
+    "ProductTypeId": 4,
     "ProductBrandId": 5
   },
   {
-    "Name": "Core Blue Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 10,
-    "PictureUrl": "images/products/hat-core1.png",
+    "Name": "MARTINEZ MC 58 S CAD",
+    "Description": "Κλασική κιθάρα, κωδικός προϊόντος: 2105, μαζί με την κιθάρα παραλαμβάνετε δωρεάν μαλακή θήκη (τύπου gigbag)",
+    "Price": 285,
+    "PictureUrl": "images/products/martinez-ronda-s-TOP.jpg",
+    "ProductTypeId": 4,
+    "ProductBrandId": 5
+  },
+  {
+    "Name": "Mayson Alpha 3 sce",
+    "Description": "Ηλεκτροακουστική κιθάρα, κωδικός προϊόντος: 1450",
+    "Price": 350,
+    "PictureUrl": "images/products/mayson-alpha-3-sce-1.jpg",
     "ProductTypeId": 2,
-    "ProductBrandId": 2
-  },
-  {
-    "Name": "Green React Woolen Hat",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 8,
-    "PictureUrl": "images/products/hat-react1.png",
-    "ProductTypeId": 2,
-    "ProductBrandId": 4
-  },
-  {
-    "Name": "Purple React Woolen Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 15,
-    "PictureUrl": "images/products/hat-react2.png",
-    "ProductTypeId": 2,
-    "ProductBrandId": 4
-  },
-  {
-    "Name": "Blue Code Gloves",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 18,
-    "PictureUrl": "images/products/glove-code1.png",
-    "ProductTypeId": 4,
-    "ProductBrandId": 3
-  },
-  {
-    "Name": "Green Code Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 15,
-    "PictureUrl": "images/products/glove-code2.png",
-    "ProductTypeId": 4,
-    "ProductBrandId": 3
-  },
-  {
-    "Name": "Purple React Gloves",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
-    "Price": 16,
-    "PictureUrl": "images/products/glove-react1.png",
-    "ProductTypeId": 4,
-    "ProductBrandId": 4
-  },
-  {
-    "Name": "Green React Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 14,
-    "PictureUrl": "images/products/glove-react2.png",
-    "ProductTypeId": 4,
-    "ProductBrandId": 4
-  },
-  {
-    "Name": "Redis Red Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 250,
-    "PictureUrl": "images/products/boot-redis1.png",
-    "ProductTypeId": 3,
     "ProductBrandId": 6
   },
   {
-    "Name": "Core Red Boots",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 189.99,
-    "PictureUrl": "images/products/boot-core2.png",
-    "ProductTypeId": 3,
-    "ProductBrandId": 2
+    "Name": "Mayson ECM 10 CE",
+    "Description": "The Mayson ESM10CE Elementary Series is a beautiful guitar with cutaway which is ideal for both the living room artist and the performing player",
+    "Price": 410,
+    "PictureUrl": "images/products/mayson-ecm-10-ce-front.jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 6
   },
   {
-    "Name": "Core Purple Boots",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 199.99,
-    "PictureUrl": "images/products/boot-core1.png",
-    "ProductTypeId": 3,
-    "ProductBrandId": 2
+    "Name": "Nik Huber Orca",
+    "Description": "Paying tribute to the first solid body of this kind, the Orca brings a new twist to the traditional form with a slightly thinner body and a longer scale",
+    "Price": 4800,
+    "PictureUrl": "images/products/Nik_Huber_Guitars_orca_tobacco_front.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 7
   },
   {
-    "Name": "Angular Purple Boots",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 150,
-    "PictureUrl": "images/products/boot-ang2.png",
-    "ProductTypeId": 3,
-    "ProductBrandId": 1
+    "Name": "Nik Huber Krautster II",
+    "Description": "The Krautster totally nails the sound and sheer power of raw music",
+    "Price": 3200,
+    "PictureUrl": "images/products/nik-huber-krautster-ii-worn-onyx-black-.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 7
   },
   {
-    "Name": "Angular Blue Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "images/products/boot-ang1.png",
+    "Name": "Richwood RD 12 BUS",
+    "Description": "Ακουστική κιθάρα, κωδικός προϊόντος: 1039",
+    "Price": 169,
+    "PictureUrl": "images/products/Richwood-RD-12-BUS.jpg",
     "ProductTypeId": 3,
-    "ProductBrandId": 1
+    "ProductBrandId": 8
+  },
+  {
+    "Name": "Richwood RD 17-12 CE",
+    "Description": "Ηλεκτροακουστική κιθάρα, κωδικός προϊόντος: 1034",
+    "Price": 370,
+    "PictureUrl": "images/products/Richwood-RD-17-12.jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 8
+  },
+  {
+    "Name": "Salvador Cortez CC 60",
+    "Description": "Κλασική κιθάρα, κωδικός προϊόντος: 1023",
+    "Price": 530,
+    "PictureUrl": "images/products/Salvador-Cortez-CC-60.jpg",
+    "ProductTypeId": 4,
+    "ProductBrandId": 8
+  },
+  {
+    "Name": "Salvador Cortez CS 244 CE",
+    "Description": "Ηλεκτροκλασική κιθάρα, κωδικός προϊόντος: 1028",
+    "Price": 175,
+    "PictureUrl": "images/products/Salvador-Cortez-CS-244-CE.jpg",
+    "ProductTypeId": 5,
+    "ProductBrandId": 8
+  },
+  {
+    "Name": "Schecter Reaper – 6 FR SCB",
+    "Description": "Ηλεκτρική κιθάρα, προϊόν διαθέσιμο κατόπιν παραγγελίας, κωδικός προϊόντος: 1012",
+    "Price": 1400,
+    "PictureUrl": "images/products/REAPER-6-FR-CHARCOALBURST-BODY.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 9
+  },
+  {
+    "Name": "SCHECTER omen extreme 7 BCH",
+    "Description": "Ηλεκτρική κιθάρα, κωδικός προϊόντος: 1008",
+    "Price": 550,
+    "PictureUrl": "images/products/schecter-omen-extreme-7-bch-test.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 9
   }
 ]

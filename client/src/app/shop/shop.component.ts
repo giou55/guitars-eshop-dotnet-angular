@@ -17,9 +17,9 @@ export class ShopComponent implements OnInit {
   types: Type[] = [];
   shopParams: ShopParams;
   sortOptions = [
-    {name: 'Alphabetical', value: 'name'},
-    {name: 'Price: Low to high', value: 'priceAsc'},
-    {name: 'Price: High to low', value: 'priceDesc'},
+    {name: 'Αλφαβητικά', value: 'name'},
+    {name: 'Τιμή: Χαμηλή προς υψηλή', value: 'priceAsc'},
+    {name: 'Τιμή: Υψηλή προς χαμηλή', value: 'priceDesc'},
   ];
   totalCount = 0;
 
@@ -45,14 +45,14 @@ export class ShopComponent implements OnInit {
 
   getBrands() {
     this.shopService.getBrands().subscribe({
-      next: response => this.brands = [{id: 0, name: 'All'}, ...response],
+      next: response => this.brands = [{id: 0, name: 'Όλα'}, ...response],
       error: error => console.log(error)
     })
   }
 
   getTypes() {
     this.shopService.getTypes().subscribe({
-      next: response => this.types = [{id: 0, name: 'All'}, ...response],
+      next: response => this.types = [{id: 0, name: 'Όλα'}, ...response],
       error: error => console.log(error)
     })
   }

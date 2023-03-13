@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   quantity = 1;
   quantityInBasket = 0;
 
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, 
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute,
     private bcService: BreadcrumbService, private basketService: BasketService) {
       this.bcService.set('@productDetails', ' ')
     }
@@ -68,7 +68,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   get buttonText() {
-    return this.quantityInBasket === 0 ? 'Add to basket' : 'Update basket';
+    return this.quantityInBasket === 0 ? 'Προσθήκη στο καλάθι' : 'Ενημέρωση καλαθιού';
   }
 
 }
