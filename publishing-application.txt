@@ -77,7 +77,7 @@ dotnet watch --no-hot-reload
 ------------------------------------------------------------------------
 
 Πάμε στον root φάκελο και τρέχουμε την εντολή
-dotnet publish -c Release -o publish skinet.sln
+dotnet publish -c Release -o publish eshop-dotnet-angular.sln
 και δημιουργείται η εφαρμογή μας μέσα στον φάκελο publish
 
 -c -> configuration

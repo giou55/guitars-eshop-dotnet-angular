@@ -46,20 +46,27 @@ dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c AppIdent
 
 ----------------------------------------------------------------------------------------------------------
 
-Για να φτιαχτούν οι δύο βάσεις:
+Αφού τρέξουμε το Docker Desktop,
+πάμε στον root φάκελο και γράφουμε:
+docker-compose up -d
+για να τρέξουν τα τρία containers.
+
+Μετά μπορούμε να φτιάξουμε τις δύο βάσεις:
 dotnet ef database update --context StoreContext
 dotnet ef database update --context AppIdentityDbContext
+(Οι παραπάνω εντολές να τρέξουν από τον API φάκελο)
 
 Προηγουμένως ίσως χρειάζεται να διαγράψουμε τις δύο βάσεις:
-dotnet ef database drop --force --context StoreContext
-dotnet ef database drop --force --context AppIdentityDbContext
-
-Οι παραπάνω εντολές να τρέξουν από τον API φάκελο
+dotnet ef database drop -s API -p Infrastructure -c StoreContext
+dotnet ef database drop -s API -p Infrastructure -c AppIdentityDbContext
+(Οι παραπάνω εντολές να τρέξουν από τον root φάκελο)
 
 -------------------------------------------------------------------------------------------------------
 
-Μετά γράφουμε:
+Μετά πάμε στον φάκελο API και γράφουμε:
 dotnet run
+και τρέχει η εφαρμογή μας.
+(Αν οι βάσεις δεν υπάρχουν, θα φτιαχτούν, και θα γίνουν seed τα δεδομένα)
 
 --------------------------------------------------------------------------------------------------------
 
@@ -69,4 +76,6 @@ password: Pa$$w0rd
 ----------------------------------------------------------------------------------------------------
 
 Για να τεστάρουμε την πληρωμή στο Stripe βάζουμε card number: 4242 4242 4242 4242
+
+----------------------------------------------------------------------------------------------------
 
