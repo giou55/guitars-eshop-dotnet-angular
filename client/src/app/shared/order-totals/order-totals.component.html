@@ -1,21 +1,21 @@
-<div class="bg-light px-4 py-3 text-uppercase fw-bold">
-    ΠΕΡΙΛΗΨΗ ΠΑΡΑΓΓΕΛΙΑΣ
+<div class="bg-light px-4 pt-3 text-uppercase fw-bold">
+    ΠΕΡΙΛΗΨΗ
 </div>
 
 <div class="p-4">
-    <p class="fst-italic mb-4">Τα κόστη μεταφοράς θα υπολογιστούν βάσει της επιλογής σας στο checkout</p>
+    <p class="fst-italic mb-3">Τα κόστη μεταφοράς θα υπολογιστούν βάσει της επιλογής σας στο τρόπο παράδοσης</p>
     <ul class="list-unstyled mb-4" *ngIf="(basketService.basketTotalSource$ | async) as totals">
         <li class="d-flex justify-content-between py-3 border-bottom">
-            <strong class="text-muted">Order subtotal</strong>
-            <strong>{{totals.subtotal | currency}}</strong>
+            <strong class="text-muted">Σύνολο παραγγελίας</strong>
+            <strong>{{totals.subtotal | currency:"EUR":"symbol"}}</strong>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
-            <strong class="text-muted">Shipping and handling</strong>
-            <strong>{{totals.shipping | currency}}</strong>
+            <strong class="text-muted">Μεταφορικά κόστη</strong>
+            <strong>{{totals.shipping | currency:"EUR":"symbol"}}</strong>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
             <strong class="text-muted">Σύνολο</strong>
-            <strong>{{totals.total | currency}}</strong>
+            <strong>{{totals.total | currency:"EUR":"symbol"}}</strong>
         </li>
     </ul>
 </div>
