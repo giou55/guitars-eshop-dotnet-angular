@@ -1,4 +1,9 @@
 <div class="container">
+  <section class="featured">
+    <div class="d-flex justify-content-center pt-4">
+      <h3>ΣΤΕΙΛΤΕ ΜΑΣ ΕΝΑ ΜΗΝΥΜΑ</h3>
+    </div>
+  </section>
   <div class="row">
     <div class="col-4 m-auto mt-5">
       <form>
@@ -22,14 +27,22 @@
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Μήνυμα</label>
-          <input
-            type="password"
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Μήνυμα</label
+          >
+          <textarea
             class="form-control"
-            id="exampleInputPassword1"
-          />
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
         </div>
-        <div class="btn btn-primary">Υποβολή</div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Επιθυμώ να λαμβάνω ενημερώσεις σας</label
+          >
+        </div>
+        <div class="btn btn-primary">Αποστολή</div>
       </form>
     </div>
   </div>
