@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row" *ngIf="types.length > 0 && brands.length > 0">
-        <section class="col-3">
+        <section class="col-5 col-md-3">
             <h5 class="text-danger ms-3">Ταξινόμηση</h5>
             <select class="form-select mb-4" (change)="onSortSelected($event)">
                 <option *ngFor="let sort of sortOptions"
@@ -9,8 +9,6 @@
                     {{sort.name}}
                 </option>
             </select>
-
-
             <h5 class="text-danger ms-3">Κατασκευαστές</h5>
             <ul class="list-group my-3">
                 <li class="list-group-item"
@@ -29,8 +27,8 @@
             </ul>
 
         </section>
-        <section class="col-9">
-            <div class="d-flex justify-content-between align-items-center pb-2">
+        <section class="col-7 col-md-9">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pb-2">
                 <app-paging-header
                     [totalCount]="totalCount"
                     [pageNumber]="shopParams.pageNumber"
@@ -40,12 +38,12 @@
                 <div class="d-flex mt-2">
                     <input (keyup.enter)="onSearch()" type="text" placeholder="Αναζήτηση..." class="form-control me-2" #search>
                     <button (click)="onSearch()" class="btn btn-outline-primary mx-2">Αναζήτηση</button>
-                    <button (click)="onReset()" class="btn btn-outline-success">Επαναφορά</button>
+                    <button (click)="onReset()" class="btn btn-outline-danger">Επαναφορά</button>
                 </div>
             </div>
 
             <div class="row row-cols-3 g-3 mb-4">
-                <div class="col" *ngFor="let product of products">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngFor="let product of products">
                     <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>
