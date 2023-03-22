@@ -66,9 +66,27 @@ export class ShopComponent implements OnInit {
     this.getProducts();
   }
 
+  onBrandOptionSelected(event: any) {
+    const params = this.shopService.getShopParams();
+    params.brandId = event.target.value;
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
+    this.shopParams = params;
+    this.getProducts();
+  }
+
   onTypeSelected(typeId: number) {
     const params = this.shopService.getShopParams();
     params.typeId = typeId;
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
+    this.shopParams = params;
+    this.getProducts();
+  }
+
+  onTypeOptionSelected(event: any) {
+    const params = this.shopService.getShopParams();
+    params.typeId = event.target.value;
     params.pageNumber = 1;
     this.shopService.setShopParams(params);
     this.shopParams = params;
