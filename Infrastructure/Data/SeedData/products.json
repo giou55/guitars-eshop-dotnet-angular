@@ -144,12 +144,20 @@
     "ProductBrandId": 8
   },
   {
+    "Name": "Richwood RG 16 CE BK",
+    "Description": "Ηλεκτροακουστική κιθάρα, κωδικός προϊόντος: 1032",
+    "Price": 295,
+    "PictureUrl": "images/products/Richwood-RG-16-CE-BK.jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 8
+  },
+  {
     "Name": "Salvador Cortez CC 60",
     "Description": "Κλασική κιθάρα, κωδικός προϊόντος: 1023",
     "Price": 530,
     "PictureUrl": "images/products/Salvador-Cortez-CC-60.jpg",
     "ProductTypeId": 4,
-    "ProductBrandId": 8
+    "ProductBrandId": 9
   },
   {
     "Name": "Salvador Cortez CS 244 CE",
@@ -157,7 +165,15 @@
     "Price": 175,
     "PictureUrl": "images/products/Salvador-Cortez-CS-244-CE.jpg",
     "ProductTypeId": 5,
-    "ProductBrandId": 8
+    "ProductBrandId": 9
+  },
+  {
+    "Name": "Salvador Cortez CC 06",
+    "Description": "Κλασική κιθάρα, κωδικός προϊόντος: 1087",
+    "Price": 160,
+    "PictureUrl": "images/products/Salvador-Cortez-CC-06.jpg",
+    "ProductTypeId": 4,
+    "ProductBrandId": 9
   },
   {
     "Name": "Schecter Reaper – 6 FR SCB",
@@ -165,7 +181,7 @@
     "Price": 1400,
     "PictureUrl": "images/products/REAPER-6-FR-CHARCOALBURST-BODY.jpg",
     "ProductTypeId": 1,
-    "ProductBrandId": 9
+    "ProductBrandId": 10
   },
   {
     "Name": "SCHECTER omen extreme 7 BCH",
@@ -173,6 +189,14 @@
     "Price": 550,
     "PictureUrl": "images/products/schecter-omen-extreme-7-bch-test.jpg",
     "ProductTypeId": 1,
-    "ProductBrandId": 9
+    "ProductBrandId": 10
+  },
+  {
+    "Name": "Schecter C-1 Exotic Spalted Maple",
+    "Description": "Ηλεκτρική κιθάρα, προϊόν διαθέσιμο κατόπιν παραγγελίας, κωδικός προϊόντος: 2917",
+    "Price": 1250,
+    "PictureUrl": "images/products/C-1-Exotic-Spalted-Maple.jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 10
   }
 ]
