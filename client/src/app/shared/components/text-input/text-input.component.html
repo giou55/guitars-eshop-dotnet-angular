@@ -1,6 +1,6 @@
 <div class="form-floating mb-3">
-    <input 
-      type={{type}} 
+    <input
+      type={{type}}
       [formControl]="control"
       placeholder="{{label}}"
       class="form-control"
@@ -8,8 +8,22 @@
     >
     <div *ngIf="control.status === 'PENDING'" class="fa fa-spinner fa-spin loader"></div>
     <label for="floatingInput">{{label}}</label>
-    <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please enter your {{label}}</div>
-    <div *ngIf="control.errors?.['email']" class="invalid-feedback">Invalid email address</div>
-    <div *ngIf="control.errors?.['pattern']" class="invalid-feedback">Password not complex enough</div>
-    <div *ngIf="control.errors?.['emailExists']" class="invalid-feedback">Email address is taken</div>
+    <div *ngIf="control.errors?.['required']" class="invalid-feedback">
+      Παρακαλούμε συμπληρώστε το πεδίο
+    </div>
+    <div *ngIf="control.errors?.['email']" class="invalid-feedback">
+      Μη έγκυρο email
+    </div>
+    <div *ngIf="control.errors?.['pattern']" class="invalid-feedback">
+      Password not complex enough
+    </div>
+    <div *ngIf="control.errors?.['emailExists']" class="invalid-feedback">
+      Αυτό το email υπάρχει ήδη
+    </div>
+    <div *ngIf="control.errors?.['minlength']" class="invalid-feedback">
+      Πρέπει να έχει τουλάχιστον 6 χαρακτήρες
+    </div>
+    <div *ngIf="control.errors?.['maxlength']" class="invalid-feedback">
+      Δεν πρέπει να υπερβαίνει τους 10 χαρακτήρες
+    </div>
   </div>

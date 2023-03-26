@@ -17,8 +17,11 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
-            ITokenService tokenService, IMapper mapper)
+        public AccountController(
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            ITokenService tokenService,
+            IMapper mapper)
         {
             _mapper = mapper;
             _tokenService = tokenService;
@@ -64,7 +67,7 @@ namespace API.Controllers
         {
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             {
-                return new BadRequestObjectResult(new ApiValidationErrorResponse 
+                return new BadRequestObjectResult(new ApiValidationErrorResponse
                     { Errors = new[] { "Email address is in use" } });
             }
 
