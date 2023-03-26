@@ -78,13 +78,6 @@ namespace API.Controllers
                 UserName = registerDto.Email
             };
 
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine(user.DisplayName);
-            Console.WriteLine(user.Email);
-            Console.WriteLine(user.UserName);
-            Console.WriteLine(registerDto.Password);
-            Console.WriteLine("----------------------------------------------");
-
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
             if (!result.Succeeded) return BadRequest(new ApiResponse(400));
