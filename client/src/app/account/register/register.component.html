@@ -2,7 +2,7 @@
     <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="text-center mb-4">
-          <h1 class="mb-3">Εγγραφή</h1>
+          <h2 class="mb-3">Εγγραφή νέου χρήστη</h2>
         </div>
 
         <app-text-input [formControl]="registerForm.controls['displayName']" [label]="'Όνομα'"></app-text-input>
@@ -16,7 +16,9 @@
         </ul>
 
         <div class="d-grid">
-          <button [disabled]="registerForm.invalid" class="btn btn-lg btn-primary mt-3" type="submit">Register</button>
+          <button [disabled]="registerForm.invalid" class="btn btn-lg btn-primary mt-3" type="submit">
+            Εγγραφή
+          </button>
         </div>
       </form>
     </div>

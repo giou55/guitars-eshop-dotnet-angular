@@ -14,10 +14,10 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) {}
 
-  complexPassword = "(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$"
+  complexPassword = "(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$";
 
   registerForm = this.fb.group({
-    displayName: ['', Validators.required, Validators.minLength(4), Validators.maxLength(30)],
+    displayName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
     email: ['', [Validators.required, Validators.email], [this.validateEmailNotTaken()]],
     //password: ['', [Validators.required, Validators.pattern(this.complexPassword)]],
     password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
