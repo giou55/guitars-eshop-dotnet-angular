@@ -97,7 +97,7 @@ ItemGroup where we include our referencesto our other dependencies.
 </ItemGroup>
 
 Μετά πάμε στον root φάκελο και τρέχουμε πάλι την εντολή
-dotnet publish -c Release -o publish skinet.sln
+dotnet publish -c Release -o publish eshop-dotnet-angular.sln
 και τώρα έχουμε και τον φάκελο Content μέσα στον φάκελο publish
 
 -------------------------------------------------------------------------
