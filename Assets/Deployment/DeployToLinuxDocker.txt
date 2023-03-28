@@ -184,27 +184,27 @@ Deploy to Linux using Docker - for use with .Net 7.0
 19.  Update the configuration for your API keys where it says REPLACEME
     and then paste the config into the nano editor
 
-    [Unit]
-    Description=Kestrel service running on Ubuntu 20.04
-    [Service]
-    WorkingDirectory=/var/guitars-eshop
-    ExecStart=/usr/bin/dotnet /var/guitars-eshop/API.dll
-    Restart=always
-    RestartSec=10
-    SyslogIdentifier=guitars-eshop
-    User=www-data
-    Environment=ASPNETCORE_ENVIRONMENT=Production
-    Environment='Token__Key=CHANGE ME TO SOMETHING SECURE'
-    Environment='Token__Issuer=http://165.227.163.19'
-    Environment='StripeSettings__PublishibleKey=pk_test_51HzgaFIXr1p1PxRJ0T0QFXlOjX7gTpjLEVANQZXnw6wk6ef22MscGIf6ZtaKWggh6CP5w2FGC6BilQ4mD1h97Glp00Zy3OswVT'
-    Environment='StripeSettings__SecretKey=sk_test_51HzgaFIXr1p1PxRJgGCuuNkeLtM4y9PcUcGaK3694zr3NkLUoDFF9ZE1btLUYf1kt8wPh0hbSjCKfmcLiUHoDxan00Xv35KSmm'
-    Environment='StripeSettings__WhSecret=whsec_Iz2CUDCxTwFcyvrlUOLZJybFSBqvGtVX'
-    Environment='ConnectionStrings__DefaultConnection=Server=localhost;Port=5432;User Id=appuser;Password=secret; Database=store'
-    Environment='ConnectionStrings__IdentityConnection=Server=localhost;Port=5432;User Id=appuser;Password=secret; Database=identity'
-    Environment='ConnectionStrings__Redis=localhost'
-    Environment='ApiUrl=http://165.227.163.19/Content/'
-    [Install]
-    WantedBy=multi-user.target
+[Unit]
+Description=Kestrel service running on Ubuntu 20.04
+[Service]
+WorkingDirectory=/var/guitars-eshop
+ExecStart=/usr/bin/dotnet /var/guitars-eshop/API.dll
+Restart=always
+RestartSec=10
+SyslogIdentifier=guitars-eshop
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment='Token__Key=CHANGE ME TO SOMETHING SECURE'
+Environment='Token__Issuer=http://165.227.163.19'
+Environment='StripeSettings__PublishableKey=pk_test_51MqeRYL0yc25ZNGMHzpDPsDCbXVjQNImTnckj9BTJbnf0MO4DMgzRm9dCtA8UZqlU0A99hO2Ksr2QWpIVptZt4iY006HbqZoPq'
+Environment='StripeSettings__SecretKey=sk_test_51MqeRYL0yc25ZNGMtlSEfLAOpZVo97FWhzYdojvY48wJY5QaVEwY0yG5xjvJ26awDPuPqJcLOV1eoyM0p7qYohD100G524RrFv'
+Environment='StripeSettings__WhSecret=whsec_capwSE7EV1rCSr2Xo1SDwNAKsYiMR5mY'
+Environment='ConnectionStrings__DefaultConnection=Server=localhost;Port=5432;User Id=appuser;Password=secret; Database=store'
+Environment='ConnectionStrings__IdentityConnection=Server=localhost;Port=5432;User Id=appuser;Password=secret; Database=identity'
+Environment='ConnectionStrings__Redis=localhost'
+Environment='ApiUrl=http://165.227.163.19/Content/'
+[Install]
+WantedBy=multi-user.target
 
 
 20.  Install the .Net runtime using the instructions here:

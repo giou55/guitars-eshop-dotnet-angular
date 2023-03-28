@@ -36,9 +36,9 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseCors("CorsPolicy");
 
-// app.UseCors(policy => {
-//     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
-// });
+app.UseCors(policy => {
+    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
