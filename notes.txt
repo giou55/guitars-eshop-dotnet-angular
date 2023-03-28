@@ -73,6 +73,9 @@ dotnet run
 email: bob@test.com
 password: Pa$$w0rd
 
+email: george@test.com
+password: 123456
+
 password for root user: qA35!e5W23a
 ip address: 64.226.65.221
 

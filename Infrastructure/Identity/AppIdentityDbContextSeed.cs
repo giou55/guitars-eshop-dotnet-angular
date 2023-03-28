@@ -11,21 +11,21 @@ namespace Infrastructure.Identity
             {
                 var user = new AppUser
                 {
-                    DisplayName = "Bob",
-                    Email = "bob@test.com",
-                    UserName = "bob@test.com",
+                    DisplayName = "George",
+                    Email = "george@test.com",
+                    UserName = "george@test.com",
                     Address = new Address
                     {
-                        FirstName = "Bob",
-                        LastName = "Bobbity",
-                        Street = "10 The street",
-                        City = "New York",
-                        State = "NY",
-                        Zipcode = "90210"
+                        FirstName = "George",
+                        LastName = "Giourmetakis",
+                        Street = "Alexandrou 58",
+                        City = "Athens",
+                        State = "Attica",
+                        Zipcode = "15847"
                     }
                 };
 
-                await userManager.CreateAsync(user, "Pa$$w0rd");
+                await userManager.CreateAsync(user, "123456");
             }
         }
     }
