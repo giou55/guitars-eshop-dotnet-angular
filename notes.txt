@@ -51,7 +51,16 @@ dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c AppIdent
 docker-compose up -d
 για να τρέξουν τα τρία containers.
 
-Μετά μπορούμε να φτιάξουμε τις δύο βάσεις:
+---------------------------------------------------------------------------
+
+Μετά πάμε στον φάκελο API και γράφουμε:
+dotnet run
+και τρέχει η εφαρμογή μας.
+(Αν οι βάσεις δεν υπάρχουν, θα φτιαχτούν, και θα γίνουν seed τα δεδομένα)
+
+----------------------------------------------------------------------------
+
+Για να φτιάξουμε τις δύο βάσεις:
 dotnet ef database update --context StoreContext
 dotnet ef database update --context AppIdentityDbContext
 (Οι παραπάνω εντολές να τρέξουν από τον API φάκελο)
@@ -60,13 +69,6 @@ dotnet ef database update --context AppIdentityDbContext
 dotnet ef database drop -s API -p Infrastructure -c StoreContext
 dotnet ef database drop -s API -p Infrastructure -c AppIdentityDbContext
 (Οι παραπάνω εντολές να τρέξουν από τον root φάκελο)
-
------------------------------------------------------------------------------
-
-Μετά πάμε στον φάκελο API και γράφουμε:
-dotnet run
-και τρέχει η εφαρμογή μας.
-(Αν οι βάσεις δεν υπάρχουν, θα φτιαχτούν, και θα γίνουν seed τα δεδομένα)
 
 ---------------------------------------------------------------------------
 
@@ -79,6 +81,10 @@ password: 123456
 password for root user: qA35!e5W23a
 ip address: 64.226.65.221
 
+guitars-eshop
+password for root user: gA37!e5J23a
+ip address: 165.227.163.19
+
 --------------------------------------------------------------------------------
 
 Για να τεστάρουμε την πληρωμή στο Stripe βάζουμε card number: 4242 4242 4242 4242
@@ -86,7 +92,7 @@ ip address: 64.226.65.221
 --------------------------------------------------------------------------------
 
 Το image που επέλεξα για το droplet στον Digital Ocean server:
-Docker 20.10.21OS
+Docker 20.10.21
 Ubuntu 22.04
 
 ---------------------------------------------------------------------------------

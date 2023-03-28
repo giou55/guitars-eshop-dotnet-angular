@@ -13,8 +13,11 @@ namespace API.Controllers
         private readonly string _whSecret;
         private readonly IPaymentService _paymentService;
         private readonly ILogger<PaymentsController> _logger;
-        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger, 
-            IConfiguration config)
+        public PaymentsController(
+            IPaymentService paymentService,
+            ILogger<PaymentsController> logger,
+            IConfiguration config
+        )
         {
             _logger = logger;
             _paymentService = paymentService;

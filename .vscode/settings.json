@@ -17,10 +17,10 @@
                 "name": "Linux",
                 "description": "SFTP folder",
 
-                "host": "64.226.65.221", "port": 22,
-                "user": "root", "password": "qA35!e5W23a",
+                "host": "165.227.163.19", "port": 22,
+                "user": "root", "password": "gA37!e5J23a",
 
-                "dir": "/var/skinet",
+                "dir": "/var/guitars-eshop",
                 "mappings": {
                     "publish/**": "/"
                 }
