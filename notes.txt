@@ -12,15 +12,8 @@ Stripe
 store και identity
 
 Και έχουμε δύο φακέλους Migrations:
-Infrastructure/Data/Migrations
-Infrastructure/Identity/Migrations
-
-------------------------------------------------------------------------
-
-Έχουμε τρία αρχεία .csproj:
-API/API.csproj
-Infrastructure/Infrastructure.csproj
-Core/Core.csproj
+Data/Migrations
+Identity/Migrations
 
 -----------------------------------------------------------------------
 
@@ -35,12 +28,12 @@ Core/Core.csproj
 ----------------------------------------------------------------------
 
 Για να φτιαχτούν τα δύο migrations για την SQLite:
-dotnet ef migrations add "Sqlite initial" -p Infrastructure -s API -c StoreContext -o Data/Migrations
-dotnet ef migrations add "Sqlite initial" -p Infrastructure -s API -c AppIdentityDbContext -o Identity/Migrations
+dotnet ef migrations add Sqlite initial -c StoreContext -o Data/Migrations
+dotnet ef migrations add Sqlite initial -c AppIdentityDbContext -o Identity/Migrations
 
 Για να φτιαχτούν τα δύο migrations για την Postgres:
-dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c StoreContext -o Data/Migrations
-dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c AppIdentityDbContext -o Identity/Migrations
+dotnet ef migrations add PostgresInitial -c StoreContext -o Data/Migrations
+dotnet ef migrations add PostgresInitial -c AppIdentityDbContext -o Identity/Migrations
 
 Οι παραπάνω εντολές να τρέξουν από τον root φάκελο του project.
 
