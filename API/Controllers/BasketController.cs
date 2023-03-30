@@ -1,4 +1,5 @@
 using API.Dtos;
+using API.Extensions;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -19,7 +20,13 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
         {
+            // add this but not use it
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+
             var basket = await _basketRepository.GetBasketAsync(id);
+
+            // also add this
+            if (basket == null) await _basketRepository.DeleteBasketAsync(id);
 
             return Ok(basket ?? new CustomerBasket(id));
         }

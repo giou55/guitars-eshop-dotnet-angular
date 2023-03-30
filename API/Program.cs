@@ -38,6 +38,7 @@ app.UseCors("CorsPolicy");
 
 app.UseCors(policy => {
     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://guitars.giourmetakis.gr");
 });
 
 app.UseAuthentication();

@@ -20,8 +20,10 @@ namespace Infrastructure.Data
 
         public async Task<CustomerBasket> GetBasketAsync(string basketId)
         {
+            //baskets are stored as strings in redis DB
             var data = await _database.StringGetAsync(basketId);
 
+            //if data is null or empty, return null, but if not, Json serialize
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
