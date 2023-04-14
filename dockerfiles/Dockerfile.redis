@@ -1,0 +1,6 @@
+    FROM redis:latest
+    
+    EXPOSE 6379
+    volumes:
+      - redis-data:/data
+    CMD ["redis-server", "--appendonly", "yes"]
