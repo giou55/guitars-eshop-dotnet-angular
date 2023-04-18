@@ -63,6 +63,11 @@ dotnet ef database drop -s API -p Infrastructure -c StoreContext
 dotnet ef database drop -s API -p Infrastructure -c AppIdentityDbContext
 (Οι παραπάνω εντολές να τρέξουν από τον root φάκελο)
 
+Οι σωστές εντολές μετά την αλλαγή των φακέλων:
+dotnet ef database drop -c StoreContext
+dotnet ef database drop -c AppIdentityDbContext
+(Οι παραπάνω εντολές να τρέξουν από τον API φάκελο)
+
 ---------------------------------------------------------------------------
 
 email: bob@test.com
