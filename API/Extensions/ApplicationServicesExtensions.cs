@@ -15,17 +15,22 @@ namespace API.Extensions
         {
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
 
-            services.AddDbContext<StoreContext>(options =>
-            {
-                //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
-            });
+            // remove this code for deployment to fly.io
+            // and add some code in Program.cs
 
-            services.AddSingleton<IConnectionMultiplexer>(c =>
-            {
-                var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
-                return ConnectionMultiplexer.Connect(options);
-            });
+            // services.AddDbContext<StoreContext>(options =>
+            // {
+            //     //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+            //     options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+            // });
+
+            // services.AddSingleton<IConnectionMultiplexer>(c =>
+            // {
+            //     var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+            //     return ConnectionMultiplexer.Connect(options);
+            // });
+
+            // end of code
 
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
