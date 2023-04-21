@@ -1,12 +1,12 @@
-using Core.Entities;
-using Core.Entities.OrderAggregate;
-using Core.Interfaces;
-using Core.Specifications;
+using Entities;
+using Entities.OrderAggregate;
+using Interfaces;
+using Specifications;
 using Microsoft.Extensions.Configuration;
 using Stripe;
-using Product = Core.Entities.Product;
+using Product = Entities.Product;
 
-namespace Infrastructure.Services
+namespace Services
 {
     public class PaymentService : IPaymentService
     {

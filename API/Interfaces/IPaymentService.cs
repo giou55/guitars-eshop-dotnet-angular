@@ -1,7 +1,7 @@
-using Core.Entities;
-using Core.Entities.OrderAggregate;
+using Entities;
+using Entities.OrderAggregate;
 
-namespace Core.Interfaces
+namespace Interfaces
 {
     public interface IPaymentService
     {

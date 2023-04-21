@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Entities;
-using Core.Entities.OrderAggregate;
+using Entities;
+using Entities.OrderAggregate;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Data
@@ -24,14 +24,14 @@ namespace Infrastructure.Data
                 if (!context.ProductTypes.Any())
                 {
                     context.ProductTypes.AddRange(GetPreconfiguredProductTypes());
-                    
+
                     await context.SaveChangesAsync();
                 }
 
                 if (!context.Products.Any())
                 {
                     context.Products.AddRange(GetPreconfiguredProducts());
-                    
+
                     await context.SaveChangesAsync();
                 }
 
@@ -41,7 +41,7 @@ namespace Infrastructure.Data
 
                     await context.SaveChangesAsync();
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace Infrastructure.Data
                 logger.LogError(ex.Message);
             }
         }
-        
+
         private static IEnumerable<DeliveryMethod> GetDeliveryMethods()
         {
             return new List<DeliveryMethod>
@@ -71,7 +71,7 @@ namespace Infrastructure.Data
                 },
             };
         }
-        
+
         private static IEnumerable<ProductBrand> GetPreconfiguredProductBrands()
         {
             return new List<ProductBrand>()

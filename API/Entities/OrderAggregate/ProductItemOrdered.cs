@@ -1,4 +1,4 @@
-namespace Core.Entities.OrderAggregate
+namespace Entities.OrderAggregate
 {
     public class ProductItemOrdered
     {
@@ -13,6 +13,7 @@ namespace Core.Entities.OrderAggregate
             PictureUrl = pictureUrl;
         }
 
+        public int Id { get; set; }
         public int ProductItemId { get; set; }
         public string ProductName { get; set; }
         public string PictureUrl { get; set; }

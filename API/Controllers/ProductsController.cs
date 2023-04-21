@@ -2,9 +2,9 @@ using API.Dtos;
 using API.Errors;
 using API.Helpers;
 using AutoMapper;
-using Core.Entities;
-using Core.Interfaces;
-using Core.Specifications;
+using Entities;
+using Interfaces;
+using Specifications;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

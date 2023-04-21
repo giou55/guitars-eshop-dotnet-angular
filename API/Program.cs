@@ -1,9 +1,8 @@
 using API.Extensions;
 using API.Middleware;
-using Core.Entities.Identity;
-using Infrastructure.Data;
-using Infrastructure.Data.Identity;
-using Infrastructure.Identity;
+using Entities;
+using Data;
+using Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -79,6 +78,13 @@ builder.Services.AddSwaggerDocumentation();
 // end of code to add for deploy to fly.io
 
 
+var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<StoreContext>(options =>
+{
+    //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+    options.UseNpgsql(connString);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -115,17 +121,19 @@ app.MapFallbackToController("Index", "Fallback");
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
+
 var context = services.GetRequiredService<StoreContext>();
-var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+//var identityContext = services.GetRequiredService<AppIdentityDbContext>();
 var userManager = services.GetRequiredService<UserManager<AppUser>>();
 var logger = services.GetRequiredService<ILogger<Program>>();
 
 try
 {
     await context.Database.MigrateAsync();
-    await identityContext.Database.MigrateAsync();
-    await StoreContextSeed.SeedAsync(context);
-    await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
+    //await identityContext.Database.MigrateAsync();
+    await StoreContextSeed.SeedAsync(context, userManager);
+    //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
+    //await StoreContextSeed.SeedUsersAsync(userManager);
 }
 catch (Exception ex)
 {

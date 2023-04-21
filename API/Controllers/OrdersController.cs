@@ -2,8 +2,8 @@ using API.Dtos;
 using API.Errors;
 using API.Extensions;
 using AutoMapper;
-using Core.Entities.OrderAggregate;
-using Core.Interfaces;
+using Entities.OrderAggregate;
+using Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +25,7 @@ namespace API.Controllers
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
-            var address = _mapper.Map<AddressDto, Address>(orderDto.ShipToAddress);
+            var address = _mapper.Map<AddressDto, OrderAddress>(orderDto.ShipToAddress);
 
             var order = await _orderService.CreateOrderAsync(email, orderDto.DeliveryMethodId, orderDto.BasketId, address);
 
@@ -33,7 +33,7 @@ namespace API.Controllers
 
             return Ok(order);
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrdersForUser()
         {

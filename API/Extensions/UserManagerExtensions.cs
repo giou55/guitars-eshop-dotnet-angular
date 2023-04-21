@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using Core.Entities.Identity;
+using Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +7,7 @@ namespace API.Extensions
 {
     public static class UserManagerExtensions
     {
-        public static async Task<AppUser> FindUserByClaimsPrincipleWithAddress(this UserManager<AppUser> userManager, 
+        public static async Task<AppUser> FindUserByClaimsPrincipleWithAddress(this UserManager<AppUser> userManager,
             ClaimsPrincipal user)
         {
             var email = user.FindFirstValue(ClaimTypes.Email);
@@ -16,7 +16,7 @@ namespace API.Extensions
                 .SingleOrDefaultAsync(x => x.Email == email);
         }
 
-        public static async Task<AppUser> FindByEmailFromClaimsPrincipal(this UserManager<AppUser> userManager, 
+        public static async Task<AppUser> FindByEmailFromClaimsPrincipal(this UserManager<AppUser> userManager,
             ClaimsPrincipal user)
         {
             return await userManager.Users

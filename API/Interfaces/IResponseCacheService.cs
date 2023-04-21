@@ -1,4 +1,4 @@
-namespace Core.Interfaces
+namespace Interfaces
 {
     public interface IResponseCacheService
     {

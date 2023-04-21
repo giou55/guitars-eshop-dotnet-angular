@@ -1,6 +1,6 @@
-using Core.Entities.Identity;
+using Entities;
 
-namespace Core.Interfaces
+namespace Interfaces
 {
     public interface ITokenService
     {

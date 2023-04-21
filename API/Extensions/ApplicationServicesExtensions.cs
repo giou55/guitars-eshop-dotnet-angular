@@ -1,10 +1,10 @@
 using API.Errors;
-using Core.Interfaces;
-using Infrastructure.Data;
-using Infrastructure.Services;
+using Interfaces;
+using Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
+using Data;
 
 namespace API.Extensions
 {
@@ -18,11 +18,11 @@ namespace API.Extensions
             // remove this code for deployment to fly.io
             // and add some code in Program.cs
 
-            services.AddDbContext<StoreContext>(options =>
-            {
-                //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
-            });
+            // services.AddDbContext<StoreContext>(options =>
+            // {
+            //     //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+            //     options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+            // });
 
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {

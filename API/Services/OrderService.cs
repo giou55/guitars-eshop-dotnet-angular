@@ -1,9 +1,9 @@
-using Core.Entities;
-using Core.Entities.OrderAggregate;
-using Core.Interfaces;
-using Core.Specifications;
+using Entities;
+using Entities.OrderAggregate;
+using Interfaces;
+using Specifications;
 
-namespace Infrastructure.Services
+namespace Services
 {
     public class OrderService : IOrderService
     {
@@ -15,7 +15,7 @@ namespace Infrastructure.Services
             _basketRepo = basketRepo;
         }
 
-        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
+        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, OrderAddress shippingAddress)
         {
             // get basket from repo
             var basket = await _basketRepo.GetBasketAsync(basketId);

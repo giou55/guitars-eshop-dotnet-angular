@@ -1,8 +1,8 @@
 using System.Text.Json;
-using Core.Interfaces;
+using Interfaces;
 using StackExchange.Redis;
 
-namespace Infrastructure.Services
+namespace Services
 {
     public class ResponseCacheService : IResponseCacheService
     {

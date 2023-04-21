@@ -1,6 +1,6 @@
 using System.Text;
-using Core.Entities.Identity;
-using Infrastructure.Data.Identity;
+using Entities;
+using Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +14,11 @@ namespace API.Extensions
             this IServiceCollection services,
             IConfiguration config)
         {
-            services.AddDbContext<AppIdentityDbContext>(options =>
-            {
-                //options.UseSqlite(config.GetConnectionString("IdentityConnection"));
-                options.UseNpgsql(config.GetConnectionString("IdentityConnection"));
-            });
+            // services.AddDbContext<StoreContext>(options =>
+            // {
+            //     //options.UseSqlite(config.GetConnectionString("IdentityConnection"));
+            //     options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+            // });
 
             services.AddIdentityCore<AppUser>(options =>
             {
@@ -27,8 +27,10 @@ namespace API.Extensions
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω";
             })
-            .AddEntityFrameworkStores<AppIdentityDbContext>()
+            .AddEntityFrameworkStores<StoreContext>()
             .AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

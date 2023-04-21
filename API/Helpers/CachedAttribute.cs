@@ -1,5 +1,5 @@
 using System.Text;
-using Core.Interfaces;
+using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

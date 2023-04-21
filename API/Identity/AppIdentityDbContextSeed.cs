@@ -1,7 +1,7 @@
-using Core.Entities.Identity;
+using Entities;
 using Microsoft.AspNetCore.Identity;
 
-namespace Infrastructure.Identity
+namespace Identity
 {
     public class AppIdentityDbContextSeed
     {

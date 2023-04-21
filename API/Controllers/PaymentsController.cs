@@ -1,7 +1,7 @@
 using API.Errors;
-using Core.Entities;
-using Core.Entities.OrderAggregate;
-using Core.Interfaces;
+using Entities;
+using Entities.OrderAggregate;
+using Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;

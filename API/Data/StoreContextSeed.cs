@@ -1,14 +1,14 @@
 using System.Reflection;
 using System.Text.Json;
-using Core.Entities;
-using Core.Entities.OrderAggregate;
-using Infrastructure.Data;
+using Entities;
+using Entities.OrderAggregate;
+using Microsoft.AspNetCore.Identity;
 
-namespace Infrastructure.Data
+namespace Data
 {
     public class StoreContextSeed
     {
-        public static async Task SeedAsync(StoreContext context)
+        public static async Task SeedAsync(StoreContext context, UserManager<AppUser> userManager)
         {
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -41,6 +41,51 @@ namespace Infrastructure.Data
             }
 
             if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
+
+            if (!userManager.Users.Any())
+            {
+                var user = new AppUser
+                {
+                    DisplayName = "George",
+                    Email = "george@test.com",
+                    UserName = "george@test.com",
+                    Address = new Entities.Address
+                    {
+                        FirstName = "George",
+                        LastName = "Giourmetakis",
+                        Street = "Alexandrou 58",
+                        City = "Athens",
+                        State = "Attica",
+                        Zipcode = "15847"
+                    }
+                };
+
+                await userManager.CreateAsync(user, "123456");
+            }
+        }
+
+        public static async Task SeedUsersAsync(UserManager<AppUser> userManager)
+        {
+            if (!userManager.Users.Any())
+            {
+                var user = new AppUser
+                {
+                    DisplayName = "George",
+                    Email = "george@test.com",
+                    UserName = "george@test.com",
+                    Address = new Entities.Address
+                    {
+                        FirstName = "George",
+                        LastName = "Giourmetakis",
+                        Street = "Alexandrou 58",
+                        City = "Athens",
+                        State = "Attica",
+                        Zipcode = "15847"
+                    }
+                };
+
+                await userManager.CreateAsync(user, "123456");
+            }
         }
     }
 }

@@ -1,11 +1,11 @@
-namespace Core.Entities.OrderAggregate
+namespace Entities.OrderAggregate
 {
     public class Order : BaseEntity
     {
         public Order()
         {
         }
-        public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail, Address shipToAddress, 
+        public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail, OrderAddress shipToAddress,
             DeliveryMethod deliveryMethod, decimal subtotal, string paymentIntentId)
         {
             BuyerEmail = buyerEmail;
@@ -18,7 +18,7 @@ namespace Core.Entities.OrderAggregate
 
         public string BuyerEmail { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
-        public Address ShipToAddress { get; set; }
+        public OrderAddress ShipToAddress { get; set; }
         public DeliveryMethod DeliveryMethod { get; set; }
         public IReadOnlyList<OrderItem> OrderItems { get; set; }
         public decimal Subtotal { get; set; }

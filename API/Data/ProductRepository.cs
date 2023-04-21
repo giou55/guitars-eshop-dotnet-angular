@@ -1,9 +1,8 @@
-using Core.Entities;
-using Core.Interfaces;
-using Infrastructure.Data;
+using Entities;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data
+namespace Data
 {
     public class ProductRepository : IProductRepository
     {

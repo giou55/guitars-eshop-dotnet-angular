@@ -1,12 +1,12 @@
-namespace Core.Entities.OrderAggregate
+namespace Entities.OrderAggregate
 {
-    public class Address
+    public class OrderAddress
     {
-        public Address()
+        public OrderAddress()
         {
         }
 
-        public Address(string firstName, string lastName, string street, string city, string state, string zipCode)
+        public OrderAddress(string firstName, string lastName, string street, string city, string state, string zipCode)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -16,6 +16,7 @@ namespace Core.Entities.OrderAggregate
             ZipCode = zipCode;
         }
 
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Street { get; set; }

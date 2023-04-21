@@ -1,7 +1,7 @@
-using Core.Entities;
-using Core.Specifications;
+using Entities;
+using Specifications;
 
-namespace Core.Interfaces
+namespace Interfaces
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {

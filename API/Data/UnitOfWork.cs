@@ -1,9 +1,8 @@
 using System.Collections;
-using Core.Entities;
-using Core.Interfaces;
-using Infrastructure.Data;
+using Entities;
+using Interfaces;
 
-namespace Infrastructure.Data
+namespace Data
 {
     public class UnitOfWork : IUnitOfWork
     {

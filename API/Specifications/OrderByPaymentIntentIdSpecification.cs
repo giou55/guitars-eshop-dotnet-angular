@@ -1,11 +1,11 @@
 using System.Linq.Expressions;
-using Core.Entities.OrderAggregate;
+using Entities.OrderAggregate;
 
-namespace Core.Specifications
+namespace Specifications
 {
     public class OrderByPaymentIntentIdSpecification : BaseSpecification<Order>
     {
-        public OrderByPaymentIntentIdSpecification(string paymentIntentId) 
+        public OrderByPaymentIntentIdSpecification(string paymentIntentId)
             : base(o => o.PaymentIntentId == paymentIntentId)
         {
         }

@@ -1,4 +1,4 @@
-namespace Core.Entities.OrderAggregate
+namespace Entities.OrderAggregate
 {
     public class DeliveryMethod : BaseEntity
     {

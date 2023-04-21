@@ -54,6 +54,10 @@ dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c StoreCon
 dotnet ef migrations add "Postgres initial" -p Infrastructure -s API -c AppIdentityDbContext -o Identity/Migrations
 για να φτιαχτούν το νέα migrations.
 
+Η μία μοναδική εντολή μετά την αλλαγή στους φακέλους
+dotnet ef migrations add PostgresInitial -c StoreContext -o Data/Migrations
+για να φτιαχτούν το νέα migrations.
+
 -p -> project
 -s -> startup project
 -c -> context
