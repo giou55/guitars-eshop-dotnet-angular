@@ -21,62 +21,62 @@ builder.Services.AddSwaggerDocumentation();
 
 // we add this code for deploying our app to fly.io
 // and remove some code from ApplicationServiceExtension.cs
-var postgresConnString = "";
+// var postgresConnString = "";
 
-if (builder.Environment.IsDevelopment())
-    postgresConnString = builder.Configuration.GetConnectionString("DefaultConnection");
-else
-{
-// Use connection string provided at runtime by Fly.io.
-    var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+// if (builder.Environment.IsDevelopment())
+//     postgresConnString = builder.Configuration.GetConnectionString("DefaultConnection");
+// else
+// {
+// // Use connection string provided at runtime by Fly.io.
+//     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-    // Parse connection URL to connection string for Npgsql
-    connUrl = connUrl.Replace("postgres://", string.Empty);
-    var pgUserPass = connUrl.Split("@")[0];
-    var pgHostPortDb = connUrl.Split("@")[1];
-    var pgHostPort = pgHostPortDb.Split("/")[0];
-    var pgDb = pgHostPortDb.Split("/")[1];
-    var pgUser = pgUserPass.Split(":")[0];
-    var pgPass = pgUserPass.Split(":")[1];
-    var pgHost = pgHostPort.Split(":")[0];
-    var pgPort = pgHostPort.Split(":")[1];
+//     // Parse connection URL to connection string for Npgsql
+//     connUrl = connUrl.Replace("postgres://", string.Empty);
+//     var pgUserPass = connUrl.Split("@")[0];
+//     var pgHostPortDb = connUrl.Split("@")[1];
+//     var pgHostPort = pgHostPortDb.Split("/")[0];
+//     var pgDb = pgHostPortDb.Split("/")[1];
+//     var pgUser = pgUserPass.Split(":")[0];
+//     var pgPass = pgUserPass.Split(":")[1];
+//     var pgHost = pgHostPort.Split(":")[0];
+//     var pgPort = pgHostPort.Split(":")[1];
 
-    postgresConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-}
+//     postgresConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+// }
 
-builder.Services.AddDbContext<StoreContext>(opt =>
-{
-    opt.UseNpgsql(postgresConnString);
-});
+// builder.Services.AddDbContext<StoreContext>(opt =>
+// {
+//     opt.UseNpgsql(postgresConnString);
+// });
 
-var redisConnString = "";
+// var redisConnString = "";
 
-if (builder.Environment.IsDevelopment())
-    redisConnString = builder.Configuration.GetConnectionString("DefaultConnection");
-else
-{
-// Use connection string provided at runtime by Fly.io.
-    var connUrl = Environment.GetEnvironmentVariable("REDIS_URL");
+// if (builder.Environment.IsDevelopment())
+//     redisConnString = builder.Configuration.GetConnectionString("DefaultConnection");
+// else
+// {
+// // Use connection string provided at runtime by Fly.io.
+//     var connUrl = Environment.GetEnvironmentVariable("REDIS_URL");
 
-    // Parse connection URL to connection string for Redis
-    connUrl = connUrl.Replace("postgres://", string.Empty);
-    var pgUserPass = connUrl.Split("@")[0];
-    var pgHostPortDb = connUrl.Split("@")[1];
-    var pgHostPort = pgHostPortDb.Split("/")[0];
-    var pgDb = pgHostPortDb.Split("/")[1];
-    var pgUser = pgUserPass.Split(":")[0];
-    var pgPass = pgUserPass.Split(":")[1];
-    var pgHost = pgHostPort.Split(":")[0];
-    var pgPort = pgHostPort.Split(":")[1];
+//     // Parse connection URL to connection string for Redis
+//     connUrl = connUrl.Replace("postgres://", string.Empty);
+//     var pgUserPass = connUrl.Split("@")[0];
+//     var pgHostPortDb = connUrl.Split("@")[1];
+//     var pgHostPort = pgHostPortDb.Split("/")[0];
+//     var pgDb = pgHostPortDb.Split("/")[1];
+//     var pgUser = pgUserPass.Split(":")[0];
+//     var pgPass = pgUserPass.Split(":")[1];
+//     var pgHost = pgHostPort.Split(":")[0];
+//     var pgPort = pgHostPort.Split(":")[1];
 
-    redisConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-}
+//     redisConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+// }
 
-builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
-{
-    return ConnectionMultiplexer.Connect(redisConnString);
-});
-// end of code for deploy to fly.io
+// builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
+// {
+//     return ConnectionMultiplexer.Connect(redisConnString);
+// });
+// end of code to add for deploy to fly.io
 
 
 var app = builder.Build();

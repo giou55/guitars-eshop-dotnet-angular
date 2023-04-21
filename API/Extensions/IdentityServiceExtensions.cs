@@ -10,7 +10,8 @@ namespace API.Extensions
 {
     public static class IdentityServiceExtensions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services,
+        public static IServiceCollection AddIdentityServices(
+            this IServiceCollection services,
             IConfiguration config)
         {
             services.AddDbContext<AppIdentityDbContext>(options =>
@@ -36,7 +37,8 @@ namespace API.Extensions
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey  = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
+                        IssuerSigningKey  = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(config["TokenKey"])),
                         ValidIssuer = config["TokenIssuer"],
                         ValidateIssuer = true,
                         ValidateAudience = false

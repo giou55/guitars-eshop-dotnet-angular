@@ -18,17 +18,17 @@ namespace API.Extensions
             // remove this code for deployment to fly.io
             // and add some code in Program.cs
 
-            // services.AddDbContext<StoreContext>(options =>
-            // {
-            //     //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-            //     options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
-            // });
+            services.AddDbContext<StoreContext>(options =>
+            {
+                //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+            });
 
-            // services.AddSingleton<IConnectionMultiplexer>(c =>
-            // {
-            //     var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
-            //     return ConnectionMultiplexer.Connect(options);
-            // });
+            services.AddSingleton<IConnectionMultiplexer>(c =>
+            {
+                var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+                return ConnectionMultiplexer.Connect(options);
+            });
 
             // end of code
 
