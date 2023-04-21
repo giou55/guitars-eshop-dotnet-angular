@@ -49,7 +49,7 @@ namespace Data
                     DisplayName = "George",
                     Email = "george@test.com",
                     UserName = "george@test.com",
-                    Address = new Entities.Address
+                    Address = new Address
                     {
                         FirstName = "George",
                         LastName = "Giourmetakis",
