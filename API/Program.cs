@@ -131,9 +131,9 @@ try
 {
     await context.Database.MigrateAsync();
     //await identityContext.Database.MigrateAsync();
-    await StoreContextSeed.SeedAsync(context, userManager);
+    await StoreContextSeed.SeedAsync(context);
     //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
-    //await StoreContextSeed.SeedUsersAsync(userManager);
+    await StoreContextSeed.SeedUsersAsync(userManager);
 }
 catch (Exception ex)
 {
