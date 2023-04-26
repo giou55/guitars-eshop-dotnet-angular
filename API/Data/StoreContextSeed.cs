@@ -11,6 +11,7 @@ namespace Data
     {
         public static async Task SeedAsync(StoreContext context)
         {
+            Console.WriteLine("SeedAsync called!!!!!!!");
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             if (!context.ProductBrands.Any())
@@ -46,7 +47,9 @@ namespace Data
 
         public static async Task SeedUsersAsync(UserManager<AppUser> userManager)
         {
-            //if (await userManager.Users.AnyAsync()) return;
+            Console.WriteLine("SeedUsersAsync!!!!!!!");
+
+            if (await userManager.Users.AnyAsync()) return;
 
             var user = new AppUser
             {
@@ -64,7 +67,10 @@ namespace Data
                 }
             };
 
-            await userManager.CreateAsync(user, "123456");
+            var response = await userManager.CreateAsync(user, "123456");
+            Console.WriteLine(response);
+            Console.WriteLine(user.Id.GetType());
+            Console.WriteLine(user.Id);
 
         }
     }

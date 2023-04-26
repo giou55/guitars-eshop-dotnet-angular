@@ -1,4 +1,5 @@
 using System.Reflection;
+using api.Entities;
 using Entities;
 using Entities.OrderAggregate;
 using Microsoft.AspNetCore.Identity;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class StoreContext : IdentityDbContext<AppUser>
+    public class StoreContext : IdentityDbContext<AppUser, AppRole, int>
     {
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
@@ -42,6 +43,18 @@ namespace Data
             //         }
             //     }
             // }
+
+            modelBuilder.Entity<AppUser>()
+                .HasOne(e => e.Address)
+                .WithOne(e => e.AppUser)
+                .HasForeignKey<AppUser>(e => e.Id)
+                .IsRequired();
+
+            modelBuilder.Entity<Address>()
+                .HasOne(e => e.AppUser)
+                .WithOne(e => e.Address)
+                .HasForeignKey<Address>(e => e.Id)
+                .IsRequired();
         }
     }
 }
