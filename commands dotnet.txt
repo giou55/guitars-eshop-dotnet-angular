@@ -36,7 +36,8 @@ dotnet tool uninstall --global dotnet-ef --version 7.0.0 (uninstalls dotnet-ef t
 dotnet tool update --global dotnet-ef (updates a global or local tool)
 
 BUILD:
-dotnet build
+dotnet build (this command builds a project and all of its dependencies.)
 
 PUBLISH:
-dotnet publish
+dotnet publish (packs the application and its dependencies into a folder for deployment to a hosting system,
+                this also builds the application before packing)

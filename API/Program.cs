@@ -20,70 +20,58 @@ builder.Services.AddSwaggerDocumentation();
 
 // we add this code for deploying our app to fly.io
 // and remove some code from ApplicationServiceExtension.cs
-// var postgresConnString = "";
 
-// if (builder.Environment.IsDevelopment())
-//     postgresConnString = builder.Configuration.GetConnectionString("DefaultConnection");
-// else
-// {
-// // Use connection string provided at runtime by Fly.io.
-//     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+// Connection string: postgres://postgres:JobC9KmW0gxQJTW@guitars-eshop-db.internal:5432
+var postgresConnString = "";
 
-//     // Parse connection URL to connection string for Npgsql
-//     connUrl = connUrl.Replace("postgres://", string.Empty);
-//     var pgUserPass = connUrl.Split("@")[0];
-//     var pgHostPortDb = connUrl.Split("@")[1];
-//     var pgHostPort = pgHostPortDb.Split("/")[0];
-//     var pgDb = pgHostPortDb.Split("/")[1];
-//     var pgUser = pgUserPass.Split(":")[0];
-//     var pgPass = pgUserPass.Split(":")[1];
-//     var pgHost = pgHostPort.Split(":")[0];
-//     var pgPort = pgHostPort.Split(":")[1];
+if (builder.Environment.IsDevelopment())
+    postgresConnString = builder.Configuration.GetConnectionString("DefaultConnection");
+else
+{
+// Use connection string provided at runtime by Fly.io.
+    var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-//     postgresConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-// }
+    // Parse connection URL to connection string for Npgsql
+    connUrl = connUrl.Replace("postgres://", string.Empty);
+    var pgUserPass = connUrl.Split("@")[0];
+    var pgHostPortDb = connUrl.Split("@")[1];
+    var pgHostPort = pgHostPortDb.Split("/")[0];
+    var pgDb = pgHostPortDb.Split("/")[1];
+    var pgUser = pgUserPass.Split(":")[0];
+    var pgPass = pgUserPass.Split(":")[1];
+    var pgHost = pgHostPort.Split(":")[0];
+    var pgPort = pgHostPort.Split(":")[1];
 
-// builder.Services.AddDbContext<StoreContext>(opt =>
-// {
-//     opt.UseNpgsql(postgresConnString);
-// });
+    postgresConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+}
 
-// var redisConnString = "";
+builder.Services.AddDbContext<StoreContext>(opt =>
+{
+    opt.UseNpgsql(postgresConnString);
+});
 
-// if (builder.Environment.IsDevelopment())
-//     redisConnString = builder.Configuration.GetConnectionString("DefaultConnection");
-// else
-// {
-// // Use connection string provided at runtime by Fly.io.
-//     var connUrl = Environment.GetEnvironmentVariable("REDIS_URL");
+var redisConnString = "";
 
-//     // Parse connection URL to connection string for Redis
-//     connUrl = connUrl.Replace("postgres://", string.Empty);
-//     var pgUserPass = connUrl.Split("@")[0];
-//     var pgHostPortDb = connUrl.Split("@")[1];
-//     var pgHostPort = pgHostPortDb.Split("/")[0];
-//     var pgDb = pgHostPortDb.Split("/")[1];
-//     var pgUser = pgUserPass.Split(":")[0];
-//     var pgPass = pgUserPass.Split(":")[1];
-//     var pgHost = pgHostPort.Split(":")[0];
-//     var pgPort = pgHostPort.Split(":")[1];
+if (builder.Environment.IsDevelopment())
+    redisConnString = builder.Configuration.GetConnectionString("Redis");
+else
+{
+    redisConnString = "redis://default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io";
+}
 
-//     redisConnString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-// }
-
-// builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
-// {
-//     return ConnectionMultiplexer.Connect(redisConnString);
-// });
+builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
+{
+    return ConnectionMultiplexer.Connect(redisConnString);
+});
 // end of code to add for deploy to fly.io
 
 
-var connString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<StoreContext>(options =>
-{
-    //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
-    options.UseNpgsql(connString);
-});
+// var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+// builder.Services.AddDbContext<StoreContext>(options =>
+// {
+//     //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+//     options.UseNpgsql(connString);
+// });
 
 var app = builder.Build();
 

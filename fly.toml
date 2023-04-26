@@ -1,6 +1,6 @@
-# fly.toml file generated for guitarsapp on 2023-04-20T20:37:16+03:00
+# fly.toml file generated for guitars-eshop on 2023-04-26T20:04:53+03:00
 
-app = "guitarsapp"
+app = "guitars-eshop"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
