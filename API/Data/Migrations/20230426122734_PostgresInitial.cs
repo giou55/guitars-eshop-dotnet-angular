@@ -64,29 +64,11 @@ namespace API.Data.Migrations
                     ShortName = table.Column<string>(type: "text", nullable: true),
                     DeliveryTime = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false)
+                    Price = table.Column<decimal>(type: "numeric(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DeliveryMethods", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "OrderAddress",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Street = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    State = table.Column<string>(type: "text", nullable: true),
-                    ZipCode = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderAddress", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,21 +82,6 @@ namespace API.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProductBrands", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductItemOrdered",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ProductItemId = table.Column<int>(type: "integer", nullable: false),
-                    ProductName = table.Column<string>(type: "text", nullable: true),
-                    PictureUrl = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductItemOrdered", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -268,10 +235,16 @@ namespace API.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     BuyerEmail = table.Column<string>(type: "text", nullable: true),
                     OrderDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ShipToAddressId = table.Column<int>(type: "integer", nullable: true),
+                    ShipToAddressId = table.Column<int>(name: "ShipToAddress_Id", type: "integer", nullable: false),
+                    ShipToAddressFirstName = table.Column<string>(name: "ShipToAddress_FirstName", type: "text", nullable: true),
+                    ShipToAddressLastName = table.Column<string>(name: "ShipToAddress_LastName", type: "text", nullable: true),
+                    ShipToAddressStreet = table.Column<string>(name: "ShipToAddress_Street", type: "text", nullable: true),
+                    ShipToAddressCity = table.Column<string>(name: "ShipToAddress_City", type: "text", nullable: true),
+                    ShipToAddressState = table.Column<string>(name: "ShipToAddress_State", type: "text", nullable: true),
+                    ShipToAddressZipCode = table.Column<string>(name: "ShipToAddress_ZipCode", type: "text", nullable: true),
                     DeliveryMethodId = table.Column<int>(type: "integer", nullable: true),
                     Subtotal = table.Column<decimal>(type: "numeric", nullable: false),
-                    Status = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false),
                     PaymentIntentId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -282,11 +255,6 @@ namespace API.Data.Migrations
                         column: x => x.DeliveryMethodId,
                         principalTable: "DeliveryMethods",
                         principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Orders_OrderAddress_ShipToAddressId",
-                        column: x => x.ShipToAddressId,
-                        principalTable: "OrderAddress",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -295,10 +263,10 @@ namespace API.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    PictureUrl = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    PictureUrl = table.Column<string>(type: "text", nullable: false),
                     ProductTypeId = table.Column<int>(type: "integer", nullable: false),
                     ProductBrandId = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -325,8 +293,11 @@ namespace API.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ItemOrderedId = table.Column<int>(type: "integer", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    ItemOrderedId = table.Column<int>(name: "ItemOrdered_Id", type: "integer", nullable: true),
+                    ItemOrderedProductItemId = table.Column<int>(name: "ItemOrdered_ProductItemId", type: "integer", nullable: true),
+                    ItemOrderedProductName = table.Column<string>(name: "ItemOrdered_ProductName", type: "text", nullable: true),
+                    ItemOrderedPictureUrl = table.Column<string>(name: "ItemOrdered_PictureUrl", type: "text", nullable: true),
+                    Price = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
                     OrderId = table.Column<int>(type: "integer", nullable: true)
                 },
@@ -337,12 +308,8 @@ namespace API.Data.Migrations
                         name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_OrderItems_ProductItemOrdered_ItemOrderedId",
-                        column: x => x.ItemOrderedId,
-                        principalTable: "ProductItemOrdered",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -383,11 +350,6 @@ namespace API.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_ItemOrderedId",
-                table: "OrderItems",
-                column: "ItemOrderedId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
                 column: "OrderId");
@@ -396,11 +358,6 @@ namespace API.Data.Migrations
                 name: "IX_Orders_DeliveryMethodId",
                 table: "Orders",
                 column: "DeliveryMethodId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_ShipToAddressId",
-                table: "Orders",
-                column: "ShipToAddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductBrandId",
@@ -450,9 +407,6 @@ namespace API.Data.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "ProductItemOrdered");
-
-            migrationBuilder.DropTable(
                 name: "ProductBrands");
 
             migrationBuilder.DropTable(
@@ -460,9 +414,6 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "DeliveryMethods");
-
-            migrationBuilder.DropTable(
-                name: "OrderAddress");
         }
     }
 }
