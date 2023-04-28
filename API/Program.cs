@@ -56,7 +56,11 @@ if (builder.Environment.IsDevelopment())
     redisConnString = builder.Configuration.GetConnectionString("Redis");
 else
 {
-    redisConnString = "redis://default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io";
+    //redisConnString = "redis://default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379";
+    //redisConnString = "default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379";
+    redisConnString = "fly-guitars-eshop.upstash.io:6379,ssl=true,password=1744744d01be49ccbbf0440afeb1702d";
+    //redisConnString = "redis.internal:6379";
+    //redisConnString = "localhost:6379";
 }
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
