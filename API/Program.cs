@@ -56,16 +56,20 @@ if (builder.Environment.IsDevelopment())
     redisConnString = builder.Configuration.GetConnectionString("Redis");
 else
 {
-    //redisConnString = "redis://default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379";
+    //redisConnString = "redis://:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379";
     //redisConnString = "default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379";
-    redisConnString = "fly-guitars-eshop.upstash.io:6379,ssl=true,password=1744744d01be49ccbbf0440afeb1702d";
+    //redisConnString = "fly-guitars-eshop.upstash.io:6379,ssl=true,password=1744744d01be49ccbbf0440afeb1702d";
     //redisConnString = "redis.internal:6379";
     //redisConnString = "localhost:6379";
+    redisConnString = "fly-guitars-eshop.upstash.io:6379,password=1744744d01be49ccbbf0440afeb1702d,ssl=True,abortConnect=False,sslprotocols=tls12";
 }
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
 {
     return ConnectionMultiplexer.Connect(redisConnString);
+    // return ConnectionMultiplexer.Connect(new ConfigurationOptions{
+    //             EndPoints = {"redis://default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379"},
+    //});
 });
 // end of code to add for deploy to fly.io
 
