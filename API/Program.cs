@@ -1,7 +1,7 @@
 using API.Extensions;
 using API.Middleware;
-using Entities;
 using Data;
+using Entities;
 using Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +28,7 @@ if (builder.Environment.IsDevelopment())
     postgresConnString = builder.Configuration.GetConnectionString("DefaultConnection");
 else
 {
-// Use connection string provided at runtime by Fly.io.
+    // Use connection string provided at runtime by Fly.io.
     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
     // Parse connection URL to connection string for Npgsql
@@ -61,15 +61,20 @@ else
     //redisConnString = "fly-guitars-eshop.upstash.io:6379,ssl=true,password=1744744d01be49ccbbf0440afeb1702d";
     //redisConnString = "redis.internal:6379";
     //redisConnString = "localhost:6379";
-    redisConnString = "fly-guitars-eshop.upstash.io:6379,password=1744744d01be49ccbbf0440afeb1702d,ssl=True,abortConnect=False,sslprotocols=tls12";
+    //redisConnString = "fly-guitars-eshop.upstash.io:6379,password=1744744d01be49ccbbf0440afeb1702d,ssl=True,abortConnect=False,sslprotocols=tls12";
 }
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
 {
-    return ConnectionMultiplexer.Connect(redisConnString);
-    // return ConnectionMultiplexer.Connect(new ConfigurationOptions{
-    //             EndPoints = {"redis://default:1744744d01be49ccbbf0440afeb1702d@fly-guitars-eshop.upstash.io:6379"},
-    //});
+    //return ConnectionMultiplexer.Connect(redisConnString);
+    return ConnectionMultiplexer.Connect(new ConfigurationOptions
+    {
+        EndPoints =
+                {
+                    {"fly-guitars-eshop.upstash.io", 6379}
+                },
+        Password = "1744744d01be49ccbbf0440afeb1702d"
+    });
 });
 // end of code to add for deploy to fly.io
 
@@ -92,10 +97,16 @@ app.UseSwaggerDocumentation();
 
 app.UseStaticFiles();
 
+// app.UseStaticFiles(new StaticFileOptions
+// {
+//     FileProvider = new PhysicalFileProvider(
+//         Path.Combine(Directory.GetCurrentDirectory(), "Content")), RequestPath = "/Content"
+// });
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "Content")), RequestPath = "/Content"
+        Path.Combine(builder.Environment.ContentRootPath, "Content")), RequestPath = "/Content"
 });
 
 // app.UseCors("CorsPolicy");
@@ -105,7 +116,8 @@ app.UseStaticFiles(new StaticFileOptions
 //     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:8080");
 // });
 
-app.UseCors(builder => {
+app.UseCors(builder =>
+{
     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
 });
 
