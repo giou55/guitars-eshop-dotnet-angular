@@ -1,0 +1,70 @@
+Σε αυτό το project χρησιμοποιούμε:
+.NET Core 7
+Entity Framework
+Identity
+Postgres
+Redis
+Stripe
+
+-----------------------------------------------------------------------
+
+Έχουμε μία βάση: store
+Και έχουμε έναν φάκελο Migrations: API/Data/Migrations
+
+-----------------------------------------------------------------------
+
+Τα στατικά αρχεία της Angular, αφού κάνουμε ng build,
+φτιάχνονται και μπαίνουν μέσα στον φάκελο API/wwwroot
+
+---------------------------------------------------------------------
+
+Για να τρέξει η εφαρμογή μας locally:
+- Γράφουμε redis-server για να τρέξει ο redis
+- Τρέχουμε το Docker Desktop
+- Γράφουμε
+  docker run --name postgres -e POSTGRES_USER=appuser -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
+  για να τρέξει ο container με την postgres
+- Πάμε στον φάκελο API και γράφουμε dotnet run
+- Πάμε στον φάκελο client και γράφουμε ng serve
+
+----------------------------------------------------------------------
+
+Για κάθε αλλαγή φτιάχνουμε νέο image και το ανεβάζουμε στο docker hub:
+docker build -t giourme/guitars-eshop:latest .
+docker push giourme/guitars-eshop:latest
+
+Αν δεν έχουμε access, πρέπει να κάνουμε login:
+docker login
+ή βάζοντας και τα credentials
+docker login -u <username> -p <password>
+
+---------------------------------------------------------------------
+
+Στο αρχείο fly.toml προσθέτουμε τα παρακάτω στοιχεία που δεν είναι μυστικά στο [env]:
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+
+---------------------------------------------------------------------
+
+Για να δούμε τα μυστικά δεδομένα της εφαρμογής:
+fly secrets list
+
+Για την εφαρμογή μας θα εμφανίσει το DATABASE_URL και το REDIS_URL.
+
+Environment='StripeSettings__PublishableKey=pk_test_2PZ84pFKu2MddUgGDG521v9m00SlLWySIR'
+Environment='StripeSettings__SecretKey=sk_test_x6ontnOi8wyfuuob8Intk4Bf00T5dSrgFV'
+Environment='StripeSettings__WhSecret=whsec_90a72718423b4f5b87c329dab4b7c6b2f78d7406f00ffefeb901986f1be941ae'
+Environment='ApiUrl=http://165.227.163.19/Content/'
+
+Θα προσθέσουμε το TokenKey, to TokenIssuer, το ApiUrl, το StripeSecret,
+γράφοντας τα παρακάτω:
+fly secrets set TokenKey=***********************
+fly secrets set TokenIssuer=***********************
+fly secrets set ApiUrl=***********************
+fly secrets set StripeSecret=***********************
+
+----------------------------------------------------------------------
+
+Για το TokenKey πάω https://delinea.com/resources/password-generator-it-tool
+και κάνω generate ένα password,
+αφού πρώτα ξετσεκάρω το Allow Symbols.
