@@ -51,17 +51,14 @@ fly secrets list
 
 Για την εφαρμογή μας θα εμφανίσει το DATABASE_URL και το REDIS_URL.
 
-Environment='StripeSettings__PublishableKey=pk_test_2PZ84pFKu2MddUgGDG521v9m00SlLWySIR'
-Environment='StripeSettings__SecretKey=sk_test_x6ontnOi8wyfuuob8Intk4Bf00T5dSrgFV'
-Environment='StripeSettings__WhSecret=whsec_90a72718423b4f5b87c329dab4b7c6b2f78d7406f00ffefeb901986f1be941ae'
-Environment='ApiUrl=http://165.227.163.19/Content/'
-
-Θα προσθέσουμε το TokenKey, to TokenIssuer, το ApiUrl, το StripeSecret,
+Μπορούμε να προσθέσουμε το TokenKey, to TokenIssuer, το ApiUrl, το StripeSecret,
 γράφοντας τα παρακάτω:
 fly secrets set TokenKey=***********************
 fly secrets set TokenIssuer=***********************
-fly secrets set ApiUrl=***********************
+fly secrets set ApiUrl=https://guitars-eshop.fly.dev/Content/
 fly secrets set StripeSecret=***********************
+
+αλλά αυτά υπάρχουν και στο appsettings.json
 
 ----------------------------------------------------------------------
 
