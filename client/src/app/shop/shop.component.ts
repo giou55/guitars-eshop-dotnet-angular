@@ -12,6 +12,7 @@ import { ShopService } from './shop.service';
 })
 export class ShopComponent implements OnInit {
   @ViewChild('search') searchTerm?: ElementRef;
+  @ViewChild('searchMobile') searchTermMobile?: ElementRef;
   products: Product[] = [];
   brands: Brand[] = [];
   types: Type[] = [];
@@ -122,6 +123,22 @@ export class ShopComponent implements OnInit {
 
   onReset() {
     if (this.searchTerm) this.searchTerm.nativeElement.value = '';
+    this.shopParams = new ShopParams();
+    this.shopService.setShopParams(this.shopParams);
+    this.getProducts();
+  }
+  
+  onSearchMobile() {
+    const params = this.shopService.getShopParams();
+    params.search = this.searchTermMobile?.nativeElement.value;
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
+    this.shopParams = params;
+    this.getProducts();
+  }
+
+  onResetMobile() {
+    if (this.searchTermMobile) this.searchTermMobile.nativeElement.value = '';
     this.shopParams = new ShopParams();
     this.shopService.setShopParams(this.shopParams);
     this.getProducts();
