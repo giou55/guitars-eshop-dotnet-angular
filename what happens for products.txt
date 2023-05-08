@@ -14,6 +14,27 @@ client/src/app/app-routing.module.ts
 {path: 'shop', loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)},
 
 ----------------------------------------------------------------------
+
+client/src/app/shop/shop.module.ts
+
+import { CommonModule } from '@angular/common';
+import { ShopRoutingModule } from './shop-routing.module';
+import { ShopComponent } from './shop.component';
+
+@NgModule({
+  declarations: [
+    ShopComponent,
+  ],
+  imports: [
+    CommonModule,
+    ShopRoutingModule
+  ]
+})
+
+export class ShopModule { }
+
+--------------------------------------------------------------------
+
 client/src/app/shop/shop-routing.module.ts
 
 {path: '', component: ShopComponent}
@@ -71,6 +92,50 @@ public async Task<ActionResult<ProductToReturnDto>> GetProducts()
     var products = await _productsRepo.GetProductsAsync;
     var data = _mapper.Map<IReadOnlyList<ProductToReturnDto>>(products);
     return Ok(data);
+}
+
+-----------------------------------------------------------------------
+
+API/Entities/Product.cs
+
+public class Product : BaseEntity
+{
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public decimal Price { get; set; }
+    public string PictureUrl { get; set; }
+    public ProductType ProductType { get; set; }
+    public int ProductTypeId { get; set; }
+    public ProductBrand ProductBrand { get; set; }
+    public int ProductBrandId { get; set; }
+}
+
+--------------------------------------------------------------------------
+API/Dtos/ProductToReturnDto.cs
+
+public class ProductToReturnDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public decimal Price { get; set; }
+    public string PictureUrl { get; set; }
+    public string ProductType { get; set; }
+    public string ProductBrand { get; set; }
+}
+
+--------------------------------------------------------------------------
+API/Helpers/MappingProfiles.cs
+
+public class MappingProfiles : Profile
+{
+    public MappingProfiles()
+    {
+        CreateMap<Product, ProductToReturnDto>()
+            .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
+            .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))
+            .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductUrlResolver>());
+    }
 }
 
 -----------------------------------------------------------------------

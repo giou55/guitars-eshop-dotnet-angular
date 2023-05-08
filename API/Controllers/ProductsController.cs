@@ -19,7 +19,8 @@ namespace API.Controllers
         public ProductsController(
             IGenericRepository<Product> productsRepo,
             IGenericRepository<ProductType> productTypeRepo,
-            IGenericRepository<ProductBrand> productBrandRepo, IMapper mapper)
+            IGenericRepository<ProductBrand> productBrandRepo,
+            IMapper mapper)
         {
             _mapper = mapper;
             _productsRepo = productsRepo;
