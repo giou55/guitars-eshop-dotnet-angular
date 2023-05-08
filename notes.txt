@@ -65,3 +65,5 @@ fly secrets set StripeSecret=***********************
 Για το TokenKey πάω https://delinea.com/resources/password-generator-it-tool
 και κάνω generate ένα password,
 αφού πρώτα ξετσεκάρω το Allow Symbols.
+
+----------------------------------------------------------------------

@@ -1,0 +1,119 @@
+Τι γίνεται όταν κάνει κλικ ο χρήστης στο Κατάστημα
+για να εμφανιστούν τα products
+
+--------------------------------------------------------------------
+
+client/src/app/core/nav-bar/nav-bar.component.html
+
+<a class="p-2" routerLink="/shop" routerLinkActive="active">Καταστημα</a>
+
+-----------------------------------------------------------------------
+
+client/src/app/app-routing.module.ts
+
+{path: 'shop', loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)},
+
+----------------------------------------------------------------------
+client/src/app/shop/shop-routing.module.ts
+
+{path: '', component: ShopComponent}
+
+--------------------------------------------------------------------
+
+client/src/app/shop/shop.component.ts
+
+products: Product[] = [];
+
+constructor(private shopService: ShopService) {}
+
+ngOnInit(): void {
+  this.getProducts();
+}
+
+getProducts() {
+  this.shopService.getProducts().subscribe({
+    next: response => {
+      this.products = response.data;
+    },
+    error: error => console.log(error)
+  })
+}
+
+----------------------------------------------------------------------
+
+client/src/app/shop/shop.service.ts
+
+constructor(private http: HttpClient) { }
+
+getProducts(): Observable<Product[]> {
+  return this.http.get<Product[]>(this.baseUrl + 'products');
+}
+
+-----------------------------------------------------------------------
+
+API/Controllers/ProductsController.cs
+
+private readonly IProductRepository _productsRepo;
+private readonly IMapper _mapper;
+
+public ProductsController(
+    IProductRepository productsRepo,
+    IMapper mapper)
+{
+    _mapper = mapper;
+    _productsRepo = productsRepo;
+}
+
+[Cached(600)]
+[HttpGet]
+public async Task<ActionResult<ProductToReturnDto>> GetProducts()
+{
+    var products = await _productsRepo.GetProductsAsync;
+    var data = _mapper.Map<IReadOnlyList<ProductToReturnDto>>(products);
+    return Ok(data);
+}
+
+-----------------------------------------------------------------------
+
+API/Interfaces/IProductRepository.cs
+
+public interface IProductRepository
+{
+  Task<IReadOnlyList<Product>> GetProductsAsync();
+}
+
+----------------------------------------------------------------------
+
+API/Data/ProductRepository.cs
+
+public class ProductRepository : IProductRepository
+{
+  private readonly StoreContext _context;
+
+  public ProductRepository(StoreContext context)
+  {
+      _context = context;
+  }
+
+  public async Task<IReadOnlyList<Product>> GetProductsAsync()
+  {
+    return await _context.Products
+      .Include(p => p.ProductType)
+      .Include(p => p.ProductBrand)
+      .ToListAsync();
+  }
+}
+
+-----------------------------------------------------------------------
+
+API/Extensions/ApplicationServicesExtensions.cs
+
+services.AddScoped<IProductRepository, ProductRepository>();
+
+-----------------------------------------------------------------------
+
+API/Program.cs
+
+builder.Services.AddApplicationServices(builder.Configuration);
+
+----------------------------------------------------------------------
